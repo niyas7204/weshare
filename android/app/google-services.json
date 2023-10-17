@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998404400991",
+    "project_id": "weshare-31e4a",
+    "storage_bucket": "weshare-31e4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998404400991:android:8f289de227ad28848878ea",
+        "android_client_info": {
+          "package_name": "com.example.weshare"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTjF800jUiTI6C0cHXWJ73Nbys4n_48GQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
