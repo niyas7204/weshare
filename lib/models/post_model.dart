@@ -22,8 +22,8 @@ class Post {
   String senderId;
   String senderName;
   String postId;
-  List<String?>? likes;
-  List<String?>? tags;
+  List? likes;
+  List? tags;
   String? textFeed;
   String? imageFeed;
 

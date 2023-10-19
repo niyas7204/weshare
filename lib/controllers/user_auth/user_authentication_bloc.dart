@@ -66,5 +66,20 @@ class UserAuthenticationBloc
             userSignUp: StateResponse.error(result.errorMessage)));
       }
     });
+    on<_userLogout>((event, emit) async {
+      bool confirmation = await alertdcontroller.confirmAlert(
+        'Are you sure want to logout',
+      );
+      if (confirmation) {
+        emit(state.copyWith(userSignUp: StateResponse.loading()));
+        final result = await userAuthenticationService.userLogout();
+        if (result.status == StateStatus.success) {
+          emit(state.copyWith(userSignUp: StateResponse.success(null)));
+        } else if (result.status == StateStatus.error) {
+          emit(state.copyWith(
+              userSignUp: StateResponse.error(result.errorMessage)));
+        }
+      }
+    });
   }
 }

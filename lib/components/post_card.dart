@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:weshare/constants/sizes.dart';
-import 'package:weshare/models/post_model.dart';
+import 'package:weshare/controllers/User_Data/userprofile_bloc.dart';
+import 'package:weshare/models/compound_user_data_model.dart';
 import 'package:weshare/models/user_profile_model.dart';
 import 'package:weshare/utils/custom_texts.dart';
 
 class PostCard extends StatelessWidget {
-  final Post post;
+  final PostsBySenderid post;
   final UserModel user;
   const PostCard({super.key, required this.post, required this.user});
 
@@ -33,13 +37,33 @@ class PostCard extends StatelessWidget {
                     CustomTexts.nameText(post.senderName),
                   ],
                 ),
-                ElevatedButton(
-                    onPressed: () {},
-                    child: CustomTexts.text15(user.following != null
-                        ? user.following!.contains(post.senderId)
-                            ? 'unfollow'
-                            : 'follow'
-                        : 'follow'))
+                // ElevatedButton(
+                //     onPressed: () {
+                //       log('on press');
+                //       log('${user.following}');
+
+                //       if (user.following != null) {
+                //         log('if 1');
+                //         if (user.following!.contains(post.senderId)) {
+                //           log('if 2');
+                //           BlocProvider.of<UserprofileBloc>(context).add(
+                //               UserprofileEvent.unfollowAnAccount(
+                //                   acountId: post.senderId,
+                //                   userId: user.userid!));
+                //         } else {
+                //           log('if 3');
+                //           BlocProvider.of<UserprofileBloc>(context).add(
+                //               UserprofileEvent.followAnAccount(
+                //                   acountId: post.senderId,
+                //                   userId: user.userid!));
+                //         }
+                //       }
+                //     },
+                //     child: CustomTexts.text15(user.following != null
+                //         ? user.following!.contains(post.senderId)
+                //             ? 'unfollow'
+                //             : 'follow'
+                //         : 'follow'))
               ],
             ),
           ),
@@ -48,16 +72,18 @@ class PostCard extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 5, right: 5),
           child: post.textFeed != null
-              ? Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.blueGrey.withOpacity(.2),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: CustomTexts.text15(post.textFeed!),
-                  ),
-                )
+              ? post.textFeed!.isNotEmpty
+                  ? Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.blueGrey.withOpacity(.2),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: CustomTexts.text15(post.textFeed!),
+                      ),
+                    )
+                  : const SizedBox()
               : const SizedBox(),
         ),
         Padding(

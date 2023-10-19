@@ -16,6 +16,14 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: CustomTexts.header1('WeShare'),
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.logout_outlined,
+                size: 30,
+              )),
+        ],
       ),
       body: BlocConsumer<UserprofileBloc, UserprofileState>(
         listener: (context, state) {},
@@ -56,33 +64,30 @@ class ProfilePage extends StatelessWidget {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CustomTexts.labelText(
-                                  '${userData.posts != null ? userData.posts!.length : 0}'),
+                              // CustomTexts.labelText(
+                              //     '${userData.posts != null ? userData.posts!.length : 0}'),
                               CustomTexts.text15('Posts'),
                             ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CustomTexts.labelText(
-                                  '${userData.followers != null ? userData.followers!.length : 0}'),
+                              // CustomTexts.labelText(
+                              //     '${userData.followers != null ? userData.followers!.length : 0}'),
                               CustomTexts.text15('Followers'),
                             ],
                           ),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              CustomTexts.labelText(
-                                  '${userData.following != null ? userData.following!.length : 0}'),
+                              // CustomTexts.labelText(
+                              //     '${userData.following != null ? userData.following!.length : 0}'),
                               CustomTexts.text15('Following'),
                             ],
                           )
                         ],
                       ),
                     ),
-                    ElevatedButton(
-                        onPressed: () async {},
-                        child: CustomTexts.header1('call')),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: CustomTexts.header1(
@@ -92,21 +97,39 @@ class ProfilePage extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: CustomTexts.labelText('posts'),
                     ),
-                    Expanded(
-                      child: ListView.separated(
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return PostCard(
-                              post: state.sharedPost!.data!.post[index],
-                              user: state.userProfile!.data!,
+                    Builder(
+                      builder: (context) {
+                        switch (state.userPosts!.status!) {
+                          case StateStatus.loading:
+                            return const Center(
+                              child: CircularProgressIndicator(),
                             );
-                          },
-                          separatorBuilder: (context, index) {
-                            return const SizedBox(
-                              height: 20,
+
+                          case StateStatus.error:
+                            return Center(
+                              child: CustomTexts.header1('nodata found'),
                             );
-                          },
-                          itemCount: state.sharedPost!.data!.post.length),
+                          case StateStatus.success:
+                            return Expanded(
+                              child: ListView.separated(
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return PostCard(
+                                      post: state.userPosts!.data![index]!,
+                                      user: state.userProfile!.data!,
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) {
+                                    return const SizedBox(
+                                      height: 20,
+                                    );
+                                  },
+                                  itemCount: state.userPosts!.data!.length),
+                            );
+                          default:
+                            return const SizedBox();
+                        }
+                      },
                     )
                   ],
                 ),

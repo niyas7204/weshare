@@ -5,5 +5,9 @@ class UserprofileEvent with _$UserprofileEvent {
   const factory UserprofileEvent.getuserprofile({
     required String userId,
   }) = getUserProfile;
-  const factory UserprofileEvent.getSharedposts() = getSharedPosts;
+
+  const factory UserprofileEvent.followAnAccount(
+      {required String acountId, required String userId}) = followAnAccount;
+  const factory UserprofileEvent.unfollowAnAccount(
+      {required String acountId, required String userId}) = unfollowAnAccount;
 }

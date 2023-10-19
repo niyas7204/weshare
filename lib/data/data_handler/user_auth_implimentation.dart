@@ -78,4 +78,14 @@ class UserAuthImplimentaion implements UserAuthenticationService {
       return StateResponse.error('login failed try later..');
     }
   }
+
+  @override
+  Future<StateResponse> userLogout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      return StateResponse.success(null);
+    } catch (e) {
+      return StateResponse.error('SignOut Failed');
+    }
+  }
 }

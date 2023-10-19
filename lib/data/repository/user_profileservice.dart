@@ -1,12 +1,14 @@
 import 'package:weshare/core/helpers/api_response_handler.dart';
-import 'package:weshare/models/post_model.dart';
-import 'package:weshare/models/user_profile_model.dart';
+import 'package:weshare/models/compound_user_data_model.dart';
+import 'package:weshare/models/user_state_mode.dart';
 
-abstract class UserProfileService {
-  Future<StateResponse<UserModel>> getUserProfile({required String userid});
+abstract class CompountService {
+  Future<StateResponse<UserStateModel>> getuser({required String userid});
 }
 
-abstract class SharedPostService {
-  Future<StateResponse<SharedPostModel>> getsharedPosts(
-      {required List<String> friends});
+abstract class FollowService {
+  Future<StateResponse> followAccount(
+      {required String accoutId, required String userId});
+  Future<StateResponse> unfollowAccount(
+      {required String accoutId, required String userId});
 }

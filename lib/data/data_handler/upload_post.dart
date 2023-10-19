@@ -7,7 +7,7 @@ import 'package:weshare/client/graphql_client.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/data/repository/upload_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:weshare/models/post_model.dart';
+import 'package:weshare/models/compound_user_data_model.dart';
 
 class UploadPostImplimentaion implements UploadPostSeivice {
   @override
@@ -43,7 +43,8 @@ class UploadPostImplimentaion implements UploadPostSeivice {
 
 //upload post to table
   @override
-  Future<StateResponse<String>> uploadpostToTable({required Post post}) async {
+  Future<StateResponse<String>> uploadpostToTable(
+      {required PostsBySenderid post}) async {
     log('post ${post.senderName} ${post.senderId}  ${post.postId}');
     final String mutation = '''mutation MyMutation {
   insert_post(objects: {senderId: "${post.senderId}", senderName: "${post.senderName}", postId: "${post.postId}",tags:${post.tags},likes: ${post.likes}, imageFeed: "${post.imageFeed}", textFeed: "${post.textFeed}"}) {
@@ -57,27 +58,37 @@ class UploadPostImplimentaion implements UploadPostSeivice {
 ''';
 
     try {
-      log('up try');
       final mutationOption = MutationOptions(document: gql(mutation));
-      log('up a op');
+
       QueryResult result =
           await GraphQlClientGenaration.graphQLClient.mutate(mutationOption);
-      log('up re');
 
-      log(result.toString());
-      final newpost = Post.fromMap(
+      final newpost = PostsBySenderid.fromMap(
           result.data!["insert_post"]["returning"][0] as Map<String, dynamic>);
 
       return StateResponse.success(newpost.postId);
     } catch (e) {
-      log('img ql$e');
       return StateResponse.error('Failed to upload image.');
     }
   }
 
+//update user ater posting
   @override
-  Future<StateResponse> updateUser({required String postId}) {
-    // TODO: implement updateUser
-    throw UnimplementedError();
+  Future<StateResponse> updateUser(
+      {required String postId, required String userId}) async {
+    final String mutation = '''mutation MyMutation {
+  update_user(_append: {following: "$postId"}, where: {userId: {_eq: "$userId"}}) {
+    affected_rows
+  }
+}
+''';
+    try {
+      final mutationOption = MutationOptions(document: gql(mutation));
+
+      await GraphQlClientGenaration.graphQLClient.mutate(mutationOption);
+      return StateResponse.success(null);
+    } catch (e) {
+      return StateResponse.error('user updation failed');
+    }
   }
 }

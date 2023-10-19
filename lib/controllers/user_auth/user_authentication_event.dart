@@ -6,4 +6,5 @@ class UserAuthenticationEvent with _$UserAuthenticationEvent {
       {required List<TextEditingController> controllers}) = _userLogin;
   const factory UserAuthenticationEvent.userSignUP(
       {required List<TextEditingController> controllers}) = _userSignup;
+  const factory UserAuthenticationEvent.userLogout() = _userLogout;
 }
