@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weshare/constants/sizes.dart';
@@ -33,9 +31,9 @@ class AlertdiologeWidgets extends GetxController {
     ]);
   }
 
-Future<bool> confirmAlert(String message)async {
+  Future<bool> confirmAlert(String message) async {
     bool confirmation = false;
-  await  Get.defaultDialog(title: 'Note', middleText: message, actions: [
+    await Get.defaultDialog(title: 'Note', middleText: message, actions: [
       ElevatedButton(
           onPressed: () {
             confirmation = false;

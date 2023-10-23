@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$SearchAccountEvent {
   String get value => throw _privateConstructorUsedError;
+  String get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) searchAccount,
+    required TResult Function(String value, String userId) searchAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? searchAccount,
+    TResult? Function(String value, String userId)? searchAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? searchAccount,
+    TResult Function(String value, String userId)? searchAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +62,7 @@ abstract class $SearchAccountEventCopyWith<$Res> {
           SearchAccountEvent value, $Res Function(SearchAccountEvent) then) =
       _$SearchAccountEventCopyWithImpl<$Res, SearchAccountEvent>;
   @useResult
-  $Res call({String value});
+  $Res call({String value, String userId});
 }
 
 /// @nodoc
@@ -78,11 +79,16 @@ class _$SearchAccountEventCopyWithImpl<$Res, $Val extends SearchAccountEvent>
   @override
   $Res call({
     Object? value = null,
+    Object? userId = null,
   }) {
     return _then(_value.copyWith(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -96,7 +102,7 @@ abstract class _$$searchAccountImplCopyWith<$Res>
       __$$searchAccountImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String value});
+  $Res call({String value, String userId});
 }
 
 /// @nodoc
@@ -111,11 +117,16 @@ class __$$searchAccountImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? value = null,
+    Object? userId = null,
   }) {
     return _then(_$searchAccountImpl(
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
+              as String,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -124,14 +135,16 @@ class __$$searchAccountImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$searchAccountImpl implements searchAccount {
-  const _$searchAccountImpl({required this.value});
+  const _$searchAccountImpl({required this.value, required this.userId});
 
   @override
   final String value;
+  @override
+  final String userId;
 
   @override
   String toString() {
-    return 'SearchAccountEvent.searchAccount(value: $value)';
+    return 'SearchAccountEvent.searchAccount(value: $value, userId: $userId)';
   }
 
   @override
@@ -139,11 +152,12 @@ class _$searchAccountImpl implements searchAccount {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$searchAccountImpl &&
-            (identical(other.value, value) || other.value == value));
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, value, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -154,27 +168,27 @@ class _$searchAccountImpl implements searchAccount {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String value) searchAccount,
+    required TResult Function(String value, String userId) searchAccount,
   }) {
-    return searchAccount(value);
+    return searchAccount(value, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String value)? searchAccount,
+    TResult? Function(String value, String userId)? searchAccount,
   }) {
-    return searchAccount?.call(value);
+    return searchAccount?.call(value, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String value)? searchAccount,
+    TResult Function(String value, String userId)? searchAccount,
     required TResult orElse(),
   }) {
     if (searchAccount != null) {
-      return searchAccount(value);
+      return searchAccount(value, userId);
     }
     return orElse();
   }
@@ -209,11 +223,14 @@ class _$searchAccountImpl implements searchAccount {
 }
 
 abstract class searchAccount implements SearchAccountEvent {
-  const factory searchAccount({required final String value}) =
-      _$searchAccountImpl;
+  const factory searchAccount(
+      {required final String value,
+      required final String userId}) = _$searchAccountImpl;
 
   @override
   String get value;
+  @override
+  String get userId;
   @override
   @JsonKey(ignore: true)
   _$$searchAccountImplCopyWith<_$searchAccountImpl> get copyWith =>

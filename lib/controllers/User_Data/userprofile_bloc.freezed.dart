@@ -20,22 +20,23 @@ mixin _$UserprofileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) getuserprofile,
-    required TResult Function(String acountId, String userId) followAnAccount,
-    required TResult Function(String acountId, String userId) unfollowAnAccount,
+    required TResult Function(
+            String acountId, String userId, List<String> following)
+        followAnAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId)? getuserprofile,
-    TResult? Function(String acountId, String userId)? followAnAccount,
-    TResult? Function(String acountId, String userId)? unfollowAnAccount,
+    TResult? Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? getuserprofile,
-    TResult Function(String acountId, String userId)? followAnAccount,
-    TResult Function(String acountId, String userId)? unfollowAnAccount,
+    TResult Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,21 +44,18 @@ mixin _$UserprofileEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(getUserProfile value) getuserprofile,
     required TResult Function(followAnAccount value) followAnAccount,
-    required TResult Function(unfollowAnAccount value) unfollowAnAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(getUserProfile value)? getuserprofile,
     TResult? Function(followAnAccount value)? followAnAccount,
-    TResult? Function(unfollowAnAccount value)? unfollowAnAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(getUserProfile value)? getuserprofile,
     TResult Function(followAnAccount value)? followAnAccount,
-    TResult Function(unfollowAnAccount value)? unfollowAnAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -168,8 +166,9 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) getuserprofile,
-    required TResult Function(String acountId, String userId) followAnAccount,
-    required TResult Function(String acountId, String userId) unfollowAnAccount,
+    required TResult Function(
+            String acountId, String userId, List<String> following)
+        followAnAccount,
   }) {
     return getuserprofile(userId);
   }
@@ -178,8 +177,8 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId)? getuserprofile,
-    TResult? Function(String acountId, String userId)? followAnAccount,
-    TResult? Function(String acountId, String userId)? unfollowAnAccount,
+    TResult? Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
   }) {
     return getuserprofile?.call(userId);
   }
@@ -188,8 +187,8 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? getuserprofile,
-    TResult Function(String acountId, String userId)? followAnAccount,
-    TResult Function(String acountId, String userId)? unfollowAnAccount,
+    TResult Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
     required TResult orElse(),
   }) {
     if (getuserprofile != null) {
@@ -203,7 +202,6 @@ class _$getUserProfileImpl implements getUserProfile {
   TResult map<TResult extends Object?>({
     required TResult Function(getUserProfile value) getuserprofile,
     required TResult Function(followAnAccount value) followAnAccount,
-    required TResult Function(unfollowAnAccount value) unfollowAnAccount,
   }) {
     return getuserprofile(this);
   }
@@ -213,7 +211,6 @@ class _$getUserProfileImpl implements getUserProfile {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(getUserProfile value)? getuserprofile,
     TResult? Function(followAnAccount value)? followAnAccount,
-    TResult? Function(unfollowAnAccount value)? unfollowAnAccount,
   }) {
     return getuserprofile?.call(this);
   }
@@ -223,7 +220,6 @@ class _$getUserProfileImpl implements getUserProfile {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(getUserProfile value)? getuserprofile,
     TResult Function(followAnAccount value)? followAnAccount,
-    TResult Function(unfollowAnAccount value)? unfollowAnAccount,
     required TResult orElse(),
   }) {
     if (getuserprofile != null) {
@@ -253,7 +249,7 @@ abstract class _$$followAnAccountImplCopyWith<$Res>
       __$$followAnAccountImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String acountId, String userId});
+  $Res call({String acountId, String userId, List<String> following});
 }
 
 /// @nodoc
@@ -269,6 +265,7 @@ class __$$followAnAccountImplCopyWithImpl<$Res>
   $Res call({
     Object? acountId = null,
     Object? userId = null,
+    Object? following = null,
   }) {
     return _then(_$followAnAccountImpl(
       acountId: null == acountId
@@ -279,6 +276,10 @@ class __$$followAnAccountImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      following: null == following
+          ? _value._following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -286,16 +287,27 @@ class __$$followAnAccountImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$followAnAccountImpl implements followAnAccount {
-  const _$followAnAccountImpl({required this.acountId, required this.userId});
+  const _$followAnAccountImpl(
+      {required this.acountId,
+      required this.userId,
+      required final List<String> following})
+      : _following = following;
 
   @override
   final String acountId;
   @override
   final String userId;
+  final List<String> _following;
+  @override
+  List<String> get following {
+    if (_following is EqualUnmodifiableListView) return _following;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_following);
+  }
 
   @override
   String toString() {
-    return 'UserprofileEvent.followAnAccount(acountId: $acountId, userId: $userId)';
+    return 'UserprofileEvent.followAnAccount(acountId: $acountId, userId: $userId, following: $following)';
   }
 
   @override
@@ -305,11 +317,14 @@ class _$followAnAccountImpl implements followAnAccount {
             other is _$followAnAccountImpl &&
             (identical(other.acountId, acountId) ||
                 other.acountId == acountId) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            const DeepCollectionEquality()
+                .equals(other._following, _following));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, acountId, userId);
+  int get hashCode => Object.hash(runtimeType, acountId, userId,
+      const DeepCollectionEquality().hash(_following));
 
   @JsonKey(ignore: true)
   @override
@@ -322,32 +337,33 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) getuserprofile,
-    required TResult Function(String acountId, String userId) followAnAccount,
-    required TResult Function(String acountId, String userId) unfollowAnAccount,
+    required TResult Function(
+            String acountId, String userId, List<String> following)
+        followAnAccount,
   }) {
-    return followAnAccount(acountId, userId);
+    return followAnAccount(acountId, userId, following);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId)? getuserprofile,
-    TResult? Function(String acountId, String userId)? followAnAccount,
-    TResult? Function(String acountId, String userId)? unfollowAnAccount,
+    TResult? Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
   }) {
-    return followAnAccount?.call(acountId, userId);
+    return followAnAccount?.call(acountId, userId, following);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? getuserprofile,
-    TResult Function(String acountId, String userId)? followAnAccount,
-    TResult Function(String acountId, String userId)? unfollowAnAccount,
+    TResult Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
     required TResult orElse(),
   }) {
     if (followAnAccount != null) {
-      return followAnAccount(acountId, userId);
+      return followAnAccount(acountId, userId, following);
     }
     return orElse();
   }
@@ -357,7 +373,6 @@ class _$followAnAccountImpl implements followAnAccount {
   TResult map<TResult extends Object?>({
     required TResult Function(getUserProfile value) getuserprofile,
     required TResult Function(followAnAccount value) followAnAccount,
-    required TResult Function(unfollowAnAccount value) unfollowAnAccount,
   }) {
     return followAnAccount(this);
   }
@@ -367,7 +382,6 @@ class _$followAnAccountImpl implements followAnAccount {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(getUserProfile value)? getuserprofile,
     TResult? Function(followAnAccount value)? followAnAccount,
-    TResult? Function(unfollowAnAccount value)? unfollowAnAccount,
   }) {
     return followAnAccount?.call(this);
   }
@@ -377,7 +391,6 @@ class _$followAnAccountImpl implements followAnAccount {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(getUserProfile value)? getuserprofile,
     TResult Function(followAnAccount value)? followAnAccount,
-    TResult Function(unfollowAnAccount value)? unfollowAnAccount,
     required TResult orElse(),
   }) {
     if (followAnAccount != null) {
@@ -390,170 +403,16 @@ class _$followAnAccountImpl implements followAnAccount {
 abstract class followAnAccount implements UserprofileEvent {
   const factory followAnAccount(
       {required final String acountId,
-      required final String userId}) = _$followAnAccountImpl;
+      required final String userId,
+      required final List<String> following}) = _$followAnAccountImpl;
 
   String get acountId;
   @override
   String get userId;
+  List<String> get following;
   @override
   @JsonKey(ignore: true)
   _$$followAnAccountImplCopyWith<_$followAnAccountImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$unfollowAnAccountImplCopyWith<$Res>
-    implements $UserprofileEventCopyWith<$Res> {
-  factory _$$unfollowAnAccountImplCopyWith(_$unfollowAnAccountImpl value,
-          $Res Function(_$unfollowAnAccountImpl) then) =
-      __$$unfollowAnAccountImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String acountId, String userId});
-}
-
-/// @nodoc
-class __$$unfollowAnAccountImplCopyWithImpl<$Res>
-    extends _$UserprofileEventCopyWithImpl<$Res, _$unfollowAnAccountImpl>
-    implements _$$unfollowAnAccountImplCopyWith<$Res> {
-  __$$unfollowAnAccountImplCopyWithImpl(_$unfollowAnAccountImpl _value,
-      $Res Function(_$unfollowAnAccountImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? acountId = null,
-    Object? userId = null,
-  }) {
-    return _then(_$unfollowAnAccountImpl(
-      acountId: null == acountId
-          ? _value.acountId
-          : acountId // ignore: cast_nullable_to_non_nullable
-              as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$unfollowAnAccountImpl implements unfollowAnAccount {
-  const _$unfollowAnAccountImpl({required this.acountId, required this.userId});
-
-  @override
-  final String acountId;
-  @override
-  final String userId;
-
-  @override
-  String toString() {
-    return 'UserprofileEvent.unfollowAnAccount(acountId: $acountId, userId: $userId)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$unfollowAnAccountImpl &&
-            (identical(other.acountId, acountId) ||
-                other.acountId == acountId) &&
-            (identical(other.userId, userId) || other.userId == userId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, acountId, userId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$unfollowAnAccountImplCopyWith<_$unfollowAnAccountImpl> get copyWith =>
-      __$$unfollowAnAccountImplCopyWithImpl<_$unfollowAnAccountImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String userId) getuserprofile,
-    required TResult Function(String acountId, String userId) followAnAccount,
-    required TResult Function(String acountId, String userId) unfollowAnAccount,
-  }) {
-    return unfollowAnAccount(acountId, userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String userId)? getuserprofile,
-    TResult? Function(String acountId, String userId)? followAnAccount,
-    TResult? Function(String acountId, String userId)? unfollowAnAccount,
-  }) {
-    return unfollowAnAccount?.call(acountId, userId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String userId)? getuserprofile,
-    TResult Function(String acountId, String userId)? followAnAccount,
-    TResult Function(String acountId, String userId)? unfollowAnAccount,
-    required TResult orElse(),
-  }) {
-    if (unfollowAnAccount != null) {
-      return unfollowAnAccount(acountId, userId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(getUserProfile value) getuserprofile,
-    required TResult Function(followAnAccount value) followAnAccount,
-    required TResult Function(unfollowAnAccount value) unfollowAnAccount,
-  }) {
-    return unfollowAnAccount(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(getUserProfile value)? getuserprofile,
-    TResult? Function(followAnAccount value)? followAnAccount,
-    TResult? Function(unfollowAnAccount value)? unfollowAnAccount,
-  }) {
-    return unfollowAnAccount?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(getUserProfile value)? getuserprofile,
-    TResult Function(followAnAccount value)? followAnAccount,
-    TResult Function(unfollowAnAccount value)? unfollowAnAccount,
-    required TResult orElse(),
-  }) {
-    if (unfollowAnAccount != null) {
-      return unfollowAnAccount(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class unfollowAnAccount implements UserprofileEvent {
-  const factory unfollowAnAccount(
-      {required final String acountId,
-      required final String userId}) = _$unfollowAnAccountImpl;
-
-  String get acountId;
-  @override
-  String get userId;
-  @override
-  @JsonKey(ignore: true)
-  _$$unfollowAnAccountImplCopyWith<_$unfollowAnAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -565,6 +424,8 @@ mixin _$UserprofileState {
       throw _privateConstructorUsedError;
   StateResponse<List<PostsBySenderid?>>? get userPosts =>
       throw _privateConstructorUsedError;
+  List<String> get followers => throw _privateConstructorUsedError;
+  List<String> get following => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserprofileStateCopyWith<UserprofileState> get copyWith =>
@@ -580,7 +441,9 @@ abstract class $UserprofileStateCopyWith<$Res> {
   $Res call(
       {StateResponse<UserModel>? userProfile,
       StateResponse<List<PostsBySenderid?>>? sharedPost,
-      StateResponse<List<PostsBySenderid?>>? userPosts});
+      StateResponse<List<PostsBySenderid?>>? userPosts,
+      List<String> followers,
+      List<String> following});
 }
 
 /// @nodoc
@@ -599,6 +462,8 @@ class _$UserprofileStateCopyWithImpl<$Res, $Val extends UserprofileState>
     Object? userProfile = freezed,
     Object? sharedPost = freezed,
     Object? userPosts = freezed,
+    Object? followers = null,
+    Object? following = null,
   }) {
     return _then(_value.copyWith(
       userProfile: freezed == userProfile
@@ -613,6 +478,14 @@ class _$UserprofileStateCopyWithImpl<$Res, $Val extends UserprofileState>
           ? _value.userPosts
           : userPosts // ignore: cast_nullable_to_non_nullable
               as StateResponse<List<PostsBySenderid?>>?,
+      followers: null == followers
+          ? _value.followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      following: null == following
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -628,7 +501,9 @@ abstract class _$$userprofileStateImplCopyWith<$Res>
   $Res call(
       {StateResponse<UserModel>? userProfile,
       StateResponse<List<PostsBySenderid?>>? sharedPost,
-      StateResponse<List<PostsBySenderid?>>? userPosts});
+      StateResponse<List<PostsBySenderid?>>? userPosts,
+      List<String> followers,
+      List<String> following});
 }
 
 /// @nodoc
@@ -645,6 +520,8 @@ class __$$userprofileStateImplCopyWithImpl<$Res>
     Object? userProfile = freezed,
     Object? sharedPost = freezed,
     Object? userPosts = freezed,
+    Object? followers = null,
+    Object? following = null,
   }) {
     return _then(_$userprofileStateImpl(
       userProfile: freezed == userProfile
@@ -659,6 +536,14 @@ class __$$userprofileStateImplCopyWithImpl<$Res>
           ? _value.userPosts
           : userPosts // ignore: cast_nullable_to_non_nullable
               as StateResponse<List<PostsBySenderid?>>?,
+      followers: null == followers
+          ? _value._followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      following: null == following
+          ? _value._following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -669,7 +554,11 @@ class _$userprofileStateImpl implements userprofileState {
   const _$userprofileStateImpl(
       {required this.userProfile,
       required this.sharedPost,
-      required this.userPosts});
+      required this.userPosts,
+      required final List<String> followers,
+      required final List<String> following})
+      : _followers = followers,
+        _following = following;
 
   @override
   final StateResponse<UserModel>? userProfile;
@@ -677,10 +566,25 @@ class _$userprofileStateImpl implements userprofileState {
   final StateResponse<List<PostsBySenderid?>>? sharedPost;
   @override
   final StateResponse<List<PostsBySenderid?>>? userPosts;
+  final List<String> _followers;
+  @override
+  List<String> get followers {
+    if (_followers is EqualUnmodifiableListView) return _followers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_followers);
+  }
+
+  final List<String> _following;
+  @override
+  List<String> get following {
+    if (_following is EqualUnmodifiableListView) return _following;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_following);
+  }
 
   @override
   String toString() {
-    return 'UserprofileState(userProfile: $userProfile, sharedPost: $sharedPost, userPosts: $userPosts)';
+    return 'UserprofileState(userProfile: $userProfile, sharedPost: $sharedPost, userPosts: $userPosts, followers: $followers, following: $following)';
   }
 
   @override
@@ -693,12 +597,21 @@ class _$userprofileStateImpl implements userprofileState {
             (identical(other.sharedPost, sharedPost) ||
                 other.sharedPost == sharedPost) &&
             (identical(other.userPosts, userPosts) ||
-                other.userPosts == userPosts));
+                other.userPosts == userPosts) &&
+            const DeepCollectionEquality()
+                .equals(other._followers, _followers) &&
+            const DeepCollectionEquality()
+                .equals(other._following, _following));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userProfile, sharedPost, userPosts);
+  int get hashCode => Object.hash(
+      runtimeType,
+      userProfile,
+      sharedPost,
+      userPosts,
+      const DeepCollectionEquality().hash(_followers),
+      const DeepCollectionEquality().hash(_following));
 
   @JsonKey(ignore: true)
   @override
@@ -710,10 +623,11 @@ class _$userprofileStateImpl implements userprofileState {
 
 abstract class userprofileState implements UserprofileState {
   const factory userprofileState(
-          {required final StateResponse<UserModel>? userProfile,
-          required final StateResponse<List<PostsBySenderid?>>? sharedPost,
-          required final StateResponse<List<PostsBySenderid?>>? userPosts}) =
-      _$userprofileStateImpl;
+      {required final StateResponse<UserModel>? userProfile,
+      required final StateResponse<List<PostsBySenderid?>>? sharedPost,
+      required final StateResponse<List<PostsBySenderid?>>? userPosts,
+      required final List<String> followers,
+      required final List<String> following}) = _$userprofileStateImpl;
 
   @override
   StateResponse<UserModel>? get userProfile;
@@ -721,6 +635,10 @@ abstract class userprofileState implements UserprofileState {
   StateResponse<List<PostsBySenderid?>>? get sharedPost;
   @override
   StateResponse<List<PostsBySenderid?>>? get userPosts;
+  @override
+  List<String> get followers;
+  @override
+  List<String> get following;
   @override
   @JsonKey(ignore: true)
   _$$userprofileStateImplCopyWith<_$userprofileStateImpl> get copyWith =>

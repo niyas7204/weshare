@@ -22,6 +22,7 @@ mixin _$UserAuthenticationEvent {
         userLogin,
     required TResult Function(List<TextEditingController> controllers)
         userSignUP,
+    required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$UserAuthenticationEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
     TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,6 +38,7 @@ mixin _$UserAuthenticationEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
     TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
   }) =>
@@ -44,6 +47,7 @@ mixin _$UserAuthenticationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +55,7 @@ mixin _$UserAuthenticationEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +63,7 @@ mixin _$UserAuthenticationEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
   }) =>
@@ -160,6 +166,7 @@ class _$userLoginImpl implements _userLogin {
         userLogin,
     required TResult Function(List<TextEditingController> controllers)
         userSignUP,
+    required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
     return userLogin(controllers);
@@ -170,6 +177,7 @@ class _$userLoginImpl implements _userLogin {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
     TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
     return userLogin?.call(controllers);
@@ -180,6 +188,7 @@ class _$userLoginImpl implements _userLogin {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
     TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
   }) {
@@ -194,6 +203,7 @@ class _$userLoginImpl implements _userLogin {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
     return userLogin(this);
@@ -204,6 +214,7 @@ class _$userLoginImpl implements _userLogin {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
     return userLogin?.call(this);
@@ -214,6 +225,7 @@ class _$userLoginImpl implements _userLogin {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
   }) {
@@ -312,6 +324,7 @@ class _$userSignupImpl implements _userSignup {
         userLogin,
     required TResult Function(List<TextEditingController> controllers)
         userSignUP,
+    required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
     return userSignUP(controllers);
@@ -322,6 +335,7 @@ class _$userSignupImpl implements _userSignup {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
     TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
     return userSignUP?.call(controllers);
@@ -332,6 +346,7 @@ class _$userSignupImpl implements _userSignup {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
     TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
   }) {
@@ -346,6 +361,7 @@ class _$userSignupImpl implements _userSignup {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
     return userSignUP(this);
@@ -356,6 +372,7 @@ class _$userSignupImpl implements _userSignup {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
     return userSignUP?.call(this);
@@ -366,6 +383,7 @@ class _$userSignupImpl implements _userSignup {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
   }) {
@@ -385,6 +403,122 @@ abstract class _userSignup implements UserAuthenticationEvent {
   @JsonKey(ignore: true)
   _$$userSignupImplCopyWith<_$userSignupImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$checkUserLogedImplCopyWith<$Res> {
+  factory _$$checkUserLogedImplCopyWith(_$checkUserLogedImpl value,
+          $Res Function(_$checkUserLogedImpl) then) =
+      __$$checkUserLogedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$checkUserLogedImplCopyWithImpl<$Res>
+    extends _$UserAuthenticationEventCopyWithImpl<$Res, _$checkUserLogedImpl>
+    implements _$$checkUserLogedImplCopyWith<$Res> {
+  __$$checkUserLogedImplCopyWithImpl(
+      _$checkUserLogedImpl _value, $Res Function(_$checkUserLogedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$checkUserLogedImpl implements _checkUserLoged {
+  const _$checkUserLogedImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthenticationEvent.checkUserLoged()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$checkUserLogedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<TextEditingController> controllers)
+        userLogin,
+    required TResult Function(List<TextEditingController> controllers)
+        userSignUP,
+    required TResult Function() checkUserLoged,
+    required TResult Function() userLogout,
+  }) {
+    return checkUserLoged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<TextEditingController> controllers)? userLogin,
+    TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function()? checkUserLoged,
+    TResult? Function()? userLogout,
+  }) {
+    return checkUserLoged?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<TextEditingController> controllers)? userLogin,
+    TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function()? checkUserLoged,
+    TResult Function()? userLogout,
+    required TResult orElse(),
+  }) {
+    if (checkUserLoged != null) {
+      return checkUserLoged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_userLogin value) userLogin,
+    required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
+    required TResult Function(_userLogout value) userLogout,
+  }) {
+    return checkUserLoged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_userLogin value)? userLogin,
+    TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
+    TResult? Function(_userLogout value)? userLogout,
+  }) {
+    return checkUserLoged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_userLogin value)? userLogin,
+    TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
+    TResult Function(_userLogout value)? userLogout,
+    required TResult orElse(),
+  }) {
+    if (checkUserLoged != null) {
+      return checkUserLoged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _checkUserLoged implements UserAuthenticationEvent {
+  const factory _checkUserLoged() = _$checkUserLogedImpl;
 }
 
 /// @nodoc
@@ -429,6 +563,7 @@ class _$userLogoutImpl implements _userLogout {
         userLogin,
     required TResult Function(List<TextEditingController> controllers)
         userSignUP,
+    required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
     return userLogout();
@@ -439,6 +574,7 @@ class _$userLogoutImpl implements _userLogout {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
     TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
     return userLogout?.call();
@@ -449,6 +585,7 @@ class _$userLogoutImpl implements _userLogout {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
     TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
   }) {
@@ -463,6 +600,7 @@ class _$userLogoutImpl implements _userLogout {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
     return userLogout(this);
@@ -473,6 +611,7 @@ class _$userLogoutImpl implements _userLogout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
     return userLogout?.call(this);
@@ -483,6 +622,7 @@ class _$userLogoutImpl implements _userLogout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
   }) {
@@ -501,6 +641,7 @@ abstract class _userLogout implements UserAuthenticationEvent {
 mixin _$UserAuthenticationState {
   StateResponse<String>? get userSignUp => throw _privateConstructorUsedError;
   StateResponse<String>? get loginState => throw _privateConstructorUsedError;
+  StateResponse<String?>? get logedUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserAuthenticationStateCopyWith<UserAuthenticationState> get copyWith =>
@@ -514,7 +655,9 @@ abstract class $UserAuthenticationStateCopyWith<$Res> {
       _$UserAuthenticationStateCopyWithImpl<$Res, UserAuthenticationState>;
   @useResult
   $Res call(
-      {StateResponse<String>? userSignUp, StateResponse<String>? loginState});
+      {StateResponse<String>? userSignUp,
+      StateResponse<String>? loginState,
+      StateResponse<String?>? logedUser});
 }
 
 /// @nodoc
@@ -533,6 +676,7 @@ class _$UserAuthenticationStateCopyWithImpl<$Res,
   $Res call({
     Object? userSignUp = freezed,
     Object? loginState = freezed,
+    Object? logedUser = freezed,
   }) {
     return _then(_value.copyWith(
       userSignUp: freezed == userSignUp
@@ -543,6 +687,10 @@ class _$UserAuthenticationStateCopyWithImpl<$Res,
           ? _value.loginState
           : loginState // ignore: cast_nullable_to_non_nullable
               as StateResponse<String>?,
+      logedUser: freezed == logedUser
+          ? _value.logedUser
+          : logedUser // ignore: cast_nullable_to_non_nullable
+              as StateResponse<String?>?,
     ) as $Val);
   }
 }
@@ -557,7 +705,9 @@ abstract class _$$userAuthenticationStatelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {StateResponse<String>? userSignUp, StateResponse<String>? loginState});
+      {StateResponse<String>? userSignUp,
+      StateResponse<String>? loginState,
+      StateResponse<String?>? logedUser});
 }
 
 /// @nodoc
@@ -575,6 +725,7 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
   $Res call({
     Object? userSignUp = freezed,
     Object? loginState = freezed,
+    Object? logedUser = freezed,
   }) {
     return _then(_$userAuthenticationStatelImpl(
       userSignUp: freezed == userSignUp
@@ -585,6 +736,10 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
           ? _value.loginState
           : loginState // ignore: cast_nullable_to_non_nullable
               as StateResponse<String>?,
+      logedUser: freezed == logedUser
+          ? _value.logedUser
+          : logedUser // ignore: cast_nullable_to_non_nullable
+              as StateResponse<String?>?,
     ));
   }
 }
@@ -593,16 +748,20 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
 
 class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
   const _$userAuthenticationStatelImpl(
-      {required this.userSignUp, required this.loginState});
+      {required this.userSignUp,
+      required this.loginState,
+      required this.logedUser});
 
   @override
   final StateResponse<String>? userSignUp;
   @override
   final StateResponse<String>? loginState;
+  @override
+  final StateResponse<String?>? logedUser;
 
   @override
   String toString() {
-    return 'UserAuthenticationState(userSignUp: $userSignUp, loginState: $loginState)';
+    return 'UserAuthenticationState(userSignUp: $userSignUp, loginState: $loginState, logedUser: $logedUser)';
   }
 
   @override
@@ -613,11 +772,14 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
             (identical(other.userSignUp, userSignUp) ||
                 other.userSignUp == userSignUp) &&
             (identical(other.loginState, loginState) ||
-                other.loginState == loginState));
+                other.loginState == loginState) &&
+            (identical(other.logedUser, logedUser) ||
+                other.logedUser == logedUser));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userSignUp, loginState);
+  int get hashCode =>
+      Object.hash(runtimeType, userSignUp, loginState, logedUser);
 
   @JsonKey(ignore: true)
   @override
@@ -630,13 +792,16 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
 abstract class userAuthenticationStatel implements UserAuthenticationState {
   const factory userAuthenticationStatel(
           {required final StateResponse<String>? userSignUp,
-          required final StateResponse<String>? loginState}) =
+          required final StateResponse<String>? loginState,
+          required final StateResponse<String?>? logedUser}) =
       _$userAuthenticationStatelImpl;
 
   @override
   StateResponse<String>? get userSignUp;
   @override
   StateResponse<String>? get loginState;
+  @override
+  StateResponse<String?>? get logedUser;
   @override
   @JsonKey(ignore: true)
   _$$userAuthenticationStatelImplCopyWith<_$userAuthenticationStatelImpl>

@@ -10,7 +10,7 @@ import 'package:weshare/constants/sizes.dart';
 import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
 import 'package:weshare/core/helpers/enums.dart';
 import 'package:weshare/utils/custom_texts.dart';
-import 'package:weshare/view/home_page.dart';
+import 'package:weshare/view/splashscreen.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -34,9 +34,7 @@ class SignUpPage extends StatelessWidget {
       listener: (context, state) {
         if (state.userSignUp!.status == StateStatus.success) {
           Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => HomePage(
-              userId: state.userSignUp!.data!,
-            ),
+            builder: (context) => const SplashScreen(),
           ));
         } else if (state.userSignUp!.status == StateStatus.error) {
           alertcontroller.warnigAlert(state.userSignUp!.errorMessage!);

@@ -81,5 +81,14 @@ class UserAuthenticationBloc
         }
       }
     });
+    on<_checkUserLoged>((event, emit) async {
+      final user = await userAuthenticationService.checkLogin();
+      if (user.status == StateStatus.success) {
+        emit(state.copyWith(logedUser: StateResponse.success(user.data)));
+      } else if (user.status == StateStatus.error) {
+        emit(
+            state.copyWith(userSignUp: StateResponse.error(user.errorMessage)));
+      }
+    });
   }
 }

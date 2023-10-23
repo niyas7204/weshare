@@ -8,7 +8,7 @@ import 'package:weshare/constants/sizes.dart';
 import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
 import 'package:weshare/core/helpers/enums.dart';
 import 'package:weshare/utils/custom_texts.dart';
-import 'package:weshare/view/home_page.dart';
+import 'package:weshare/view/splashscreen.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -28,11 +28,8 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         if (state.loginState!.status == StateStatus.success) {
           //when login success navigate to home page
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomePage(userId: state.loginState!.data!),
-              ));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const SplashScreen()));
         } else if (state.loginState!.status == StateStatus.error) {
           //if login is failed show warnig message
 

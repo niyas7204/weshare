@@ -9,8 +9,9 @@ import 'package:weshare/view/search_page.dart';
 import 'package:weshare/view/upload_post.dart';
 
 class HomePage extends StatelessWidget {
-  final String userId;
-  const HomePage({super.key, required this.userId});
+  const HomePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
                   IconButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => SearchPage(),
+                          builder: (context) => const SearchPage(),
                         ));
                       },
                       icon: const Icon(
@@ -80,6 +81,7 @@ class HomePage extends StatelessWidget {
                           shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return PostCard(
+                                followings: state.following,
                                 post: state.sharedPost!.data![index]!,
                                 user: state.userProfile!.data!);
                           },

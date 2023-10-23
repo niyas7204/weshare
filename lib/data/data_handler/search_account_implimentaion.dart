@@ -8,14 +8,16 @@ import 'package:weshare/models/user_profile_model.dart';
 
 class SearchAccountImplimentation implements SearchAccountService {
   @override
-  Future<StateResponse<UserList>> searchAccount({required String value}) async {
+  Future<StateResponse<UserList>> searchAccount(
+      {required String value, required String userId}) async {
     final String query = '''query MyQuery {
-  user(where: {user_Name: {_regex: "$value"}}) {
+  user(where: {user_Name: {_regex: "$value"}, _not: {userId: {_eq: "$userId"}}}) {
     userId
     user_Name
     email
   }
 }
+
 ''';
 
     try {
@@ -23,7 +25,7 @@ class SearchAccountImplimentation implements SearchAccountService {
 
       final QueryResult result =
           await GraphQlClientGenaration.graphQLClient.query(queryOption);
-      log(result.toString());
+
       UserList user = UserList.fromMap(result.data as Map<String, dynamic>);
       return StateResponse.success(user);
     } catch (e) {

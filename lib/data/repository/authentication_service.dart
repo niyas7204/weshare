@@ -7,4 +7,5 @@ abstract class UserAuthenticationService {
   Future<StateResponse<String>> userLogIn(
       {required List<TextEditingController> controllers});
   Future<StateResponse> userLogout();
+  Future<StateResponse<String?>> checkLogin();
 }

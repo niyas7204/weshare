@@ -88,4 +88,19 @@ class UserAuthImplimentaion implements UserAuthenticationService {
       return StateResponse.error('SignOut Failed');
     }
   }
+
+//check user login or not
+  @override
+  Future<StateResponse<String?>> checkLogin() async {
+    try {
+      User? currentUser = FirebaseAuth.instance.currentUser;
+      if (currentUser != null) {
+        return StateResponse.success(currentUser.uid);
+      } else {
+        return StateResponse.error('User not loged');
+      }
+    } catch (e) {
+      return StateResponse.error('Error on checking login');
+    }
+  }
 }

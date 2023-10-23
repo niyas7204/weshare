@@ -1,5 +1,4 @@
 import 'package:weshare/core/helpers/api_response_handler.dart';
-import 'package:weshare/models/compound_user_data_model.dart';
 import 'package:weshare/models/user_state_mode.dart';
 
 abstract class CompountService {

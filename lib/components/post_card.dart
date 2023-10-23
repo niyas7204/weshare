@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,9 +8,14 @@ import 'package:weshare/models/user_profile_model.dart';
 import 'package:weshare/utils/custom_texts.dart';
 
 class PostCard extends StatelessWidget {
+  final List<String> followings;
   final PostsBySenderid post;
   final UserModel user;
-  const PostCard({super.key, required this.post, required this.user});
+  const PostCard(
+      {super.key,
+      required this.post,
+      required this.user,
+      required this.followings});
 
   @override
   Widget build(BuildContext context) {
@@ -27,43 +30,23 @@ class PostCard extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    ClipOval(
-                      child: Image.network(
-                          'https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg'),
-                    ),
-                    SpaceSized.space10w,
-                    CustomTexts.nameText(post.senderName),
-                  ],
+                ClipOval(
+                  child: Image.network(
+                      'https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg'),
                 ),
-                // ElevatedButton(
-                //     onPressed: () {
-                //       log('on press');
-                //       log('${user.following}');
-
-                //       if (user.following != null) {
-                //         log('if 1');
-                //         if (user.following!.contains(post.senderId)) {
-                //           log('if 2');
-                //           BlocProvider.of<UserprofileBloc>(context).add(
-                //               UserprofileEvent.unfollowAnAccount(
-                //                   acountId: post.senderId,
-                //                   userId: user.userid!));
-                //         } else {
-                //           log('if 3');
-                //           BlocProvider.of<UserprofileBloc>(context).add(
-                //               UserprofileEvent.followAnAccount(
-                //                   acountId: post.senderId,
-                //                   userId: user.userid!));
-                //         }
-                //       }
-                //     },
-                //     child: CustomTexts.text15(user.following != null
-                //         ? user.following!.contains(post.senderId)
-                //             ? 'unfollow'
-                //             : 'follow'
-                //         : 'follow'))
+                SpaceSized.space10w,
+                CustomTexts.nameText(post.senderName),
+                ElevatedButton(
+                    onPressed: () {
+                      BlocProvider.of<UserprofileBloc>(context).add(
+                          UserprofileEvent.followAnAccount(
+                              acountId: post.senderId,
+                              userId: user.userid!,
+                              following: followings));
+                    },
+                    child: Text(followings.contains(post.senderId)
+                        ? 'unfollow'
+                        : 'follow'))
               ],
             ),
           ),

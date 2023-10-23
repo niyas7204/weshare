@@ -115,6 +115,7 @@ class ProfilePage extends StatelessWidget {
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     return PostCard(
+                                      followings: state.following,
                                       post: state.userPosts!.data![index]!,
                                       user: state.userProfile!.data!,
                                     );

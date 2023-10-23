@@ -29,6 +29,8 @@ class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
 
       if (result.status == StateStatus.success) {
         emit(state.copyWith(
+            followers: result.data!.followers,
+            following: result.data!.following,
             userProfile: StateResponse.success(result.data!.userData),
             sharedPost: StateResponse.success(result.data!.friedsSharedPost),
             userPosts: StateResponse.success(result.data!.userPosts)));
@@ -40,31 +42,30 @@ class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
       }
     });
     on<followAnAccount>((event, emit) async {
-      await followService.followAccount(
-          accoutId: event.acountId, userId: event.userId);
-      log('unfollowed');
-      final result = await userDataImplimentation.getuser(userid: event.userId);
-      log('unfollowed cf');
-      if (result.status == StateStatus.success) {
-        emit(state.copyWith(
-            userProfile: StateResponse.success(result.data!.userData),
-            sharedPost: StateResponse.success(result.data!.friedsSharedPost),
-            userPosts: StateResponse.success(result.data!.userPosts)));
-      } else if (result.status == StateStatus.error) {
-        emit(state.copyWith(
-            userPosts: StateResponse.error(result.errorMessage),
-            sharedPost: StateResponse.error(result.errorMessage),
-            userProfile: StateResponse.error(result.errorMessage)));
+      log(event.following.toString());
+      log(event.acountId);
+      if (event.following.contains(event.acountId)) {
+        log('unfollowed');
+        await followService.unfollowAccount(
+            accoutId: event.acountId, userId: event.userId);
+      } else {
+        log('followed');
+        // call to delete
+        await followService.followAccount(
+            accoutId: event.acountId, userId: event.userId);
       }
-    });
-    on<unfollowAnAccount>((event, emit) async {
-      await followService.unfollowAccount(
-          accoutId: event.acountId, userId: event.userId);
-      log('unfollowed');
+      log('call');
+
+      //call to get all data
+
       final result = await userDataImplimentation.getuser(userid: event.userId);
-      log('unfollowed change');
+
       if (result.status == StateStatus.success) {
+        log('followings ${result.data!.following}');
+        log('success');
         emit(state.copyWith(
+            followers: result.data!.followers,
+            following: result.data!.following,
             userProfile: StateResponse.success(result.data!.userData),
             sharedPost: StateResponse.success(result.data!.friedsSharedPost),
             userPosts: StateResponse.success(result.data!.userPosts)));

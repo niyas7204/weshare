@@ -7,7 +7,7 @@ class UserprofileEvent with _$UserprofileEvent {
   }) = getUserProfile;
 
   const factory UserprofileEvent.followAnAccount(
-      {required String acountId, required String userId}) = followAnAccount;
-  const factory UserprofileEvent.unfollowAnAccount(
-      {required String acountId, required String userId}) = unfollowAnAccount;
+      {required String acountId,
+      required String userId,
+      required List<String> following}) = followAnAccount;
 }

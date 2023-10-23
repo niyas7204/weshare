@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +17,6 @@ import 'package:weshare/data/data_handler/upload_post.dart';
 import 'package:weshare/data/data_handler/user_auth_implimentation.dart';
 import 'package:weshare/firebase_options.dart';
 import 'package:weshare/view/splashscreen.dart';
-import 'package:weshare/view/login.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,5 +61,14 @@ class MyApp extends StatelessWidget {
           ),
           home: const SplashScreen()),
     );
+  }
+}
+
+Future<Tuple2<String?, bool>> checkLog() async {
+  User? currentUser = FirebaseAuth.instance.currentUser;
+  if (currentUser != null) {
+    return tuple2(currentUser.uid, true);
+  } else {
+    return tuple2(null, false);
   }
 }

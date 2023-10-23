@@ -1,4 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:graphql/client.dart';
 
 class GraphQlClientGenaration {
   static late GraphQLClient graphQLClient;
@@ -9,6 +10,9 @@ class GraphQlClientGenaration {
           'TcdpMdRwWHHDzJKsXDF0bvfpDNKZ0VT7XiND9ydYDaX3OYzPHphtdHqE7a7DKcKO',
       'Content-Type': 'application/json',
     });
-    graphQLClient = GraphQLClient(link: httpLink, cache: GraphQLCache());
+    graphQLClient = GraphQLClient(
+        link: httpLink,
+        cache: GraphQLCache(),
+        defaultPolicies: DefaultPolicies());
   }
 }
