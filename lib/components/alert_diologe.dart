@@ -32,21 +32,20 @@ class AlertdiologeWidgets extends GetxController {
   }
 
   Future<bool> confirmAlert(String message) async {
-    bool confirmation = false;
+    bool confirm = false;
     await Get.defaultDialog(title: 'Note', middleText: message, actions: [
       ElevatedButton(
-          onPressed: () {
-            confirmation = false;
+          onPressed: () async {
+            confirm = true;
             Get.back();
           },
           child: const Text('Confirm')),
       ElevatedButton(
           onPressed: () {
-            confirmation = true;
             Get.back();
           },
           child: const Text('Cancel'))
     ]);
-    return confirmation;
+    return confirm;
   }
 }

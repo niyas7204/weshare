@@ -1,11 +1,9 @@
-import 'package:dartz/dartz.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/route_manager.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:weshare/client/graphql_client.dart';
+import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/controllers/User_Data/userprofile_bloc.dart';
 import 'package:weshare/controllers/search_account_bloc/search_account_bloc.dart';
 import 'package:weshare/controllers/upload_posts/upload_post_bloc.dart';
@@ -43,7 +41,8 @@ class MyApp extends StatelessWidget {
               UserprofileBloc(UserDataImplimentation(), FollowImplimentation()),
         ),
         BlocProvider(
-          create: (context) => UserAuthenticationBloc(UserAuthImplimentaion()),
+          create: (context) => UserAuthenticationBloc(
+              UserAuthImplimentaion(), UploadPostImplimentaion()),
         ),
         BlocProvider(
           create: (context) => UploadPostBloc(UploadPostImplimentaion()),
@@ -61,14 +60,5 @@ class MyApp extends StatelessWidget {
           ),
           home: const SplashScreen()),
     );
-  }
-}
-
-Future<Tuple2<String?, bool>> checkLog() async {
-  User? currentUser = FirebaseAuth.instance.currentUser;
-  if (currentUser != null) {
-    return tuple2(currentUser.uid, true);
-  } else {
-    return tuple2(null, false);
   }
 }

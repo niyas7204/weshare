@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,8 @@ import 'package:weshare/constants/sizes.dart';
 import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
 import 'package:weshare/core/helpers/enums.dart';
 import 'package:weshare/utils/custom_texts.dart';
+import 'package:weshare/view/forgot_password_page.dart';
+import 'package:weshare/view/signup.dart';
 import 'package:weshare/view/splashscreen.dart';
 
 class LoginPage extends StatelessWidget {
@@ -15,6 +19,7 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('login bild');
     AlertdiologeWidgets alertcontroller = Get.put(AlertdiologeWidgets());
     TextEditingController emailcontroller = TextEditingController();
     TextEditingController passwordcontroller = TextEditingController();
@@ -27,9 +32,11 @@ class LoginPage extends StatelessWidget {
     return BlocConsumer<UserAuthenticationBloc, UserAuthenticationState>(
       listener: (context, state) {
         if (state.loginState!.status == StateStatus.success) {
-          //when login success navigate to home page
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const SplashScreen()));
+          log('login listen'); //when login success navigate to home page
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => const SplashScreen()),
+              (route) => false);
         } else if (state.loginState!.status == StateStatus.error) {
           //if login is failed show warnig message
 
@@ -69,6 +76,37 @@ class LoginPage extends StatelessWidget {
                                   label: labels[index],
                                   controller: controllers[index],
                                   formKey: formKey))),
+                      SpaceSized.space10H,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomTexts.text15("Don't have an account?"),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const SignUpPage(),
+                              ));
+                            },
+                            child: const Text("Create New",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 51, 150, 232))),
+                          )
+                        ],
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const ForgotPassword(),
+                          ));
+                        },
+                        child: const Text("Forgot Password?",
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 51, 150, 232))),
+                      ),
                       SpaceSized.space10H,
                       ElevatedButton(
                           onPressed: () {

@@ -5,6 +5,8 @@ class UserprofileEvent with _$UserprofileEvent {
   const factory UserprofileEvent.getuserprofile({
     required String userId,
   }) = getUserProfile;
+  const factory UserprofileEvent.changePostSelection(
+      {required PostSelection selection}) = _changePostSelection;
 
   const factory UserprofileEvent.followAnAccount(
       {required String acountId,

@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:weshare/client/graphql_client.dart';
+import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/components/alert_diologe.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/data/repository/authentication_service.dart';
@@ -14,7 +16,8 @@ class UserAuthImplimentaion implements UserAuthenticationService {
   final AlertdiologeWidgets alertdcontroller = Get.put(AlertdiologeWidgets());
   @override
   Future<StateResponse<String>> userSignUp(
-      {required List<TextEditingController> controllers}) async {
+      {required List<TextEditingController> controllers,
+      required String? profile}) async {
     UserCredential? credential;
     String? uid;
     try {
@@ -36,7 +39,7 @@ class UserAuthImplimentaion implements UserAuthenticationService {
     try {
       //mutation to isert user into table
       final String mutation = '''mutation MyMutation {
-  insert_user(objects: {email: "${controllers[1].text.trim()}", user_Name: "${controllers[0].text.trim()}", userid: $uid}) {
+  insert_user(objects: {email: "${controllers[1].text.trim()}", user_Name: "${controllers[0].text.trim()}", userid: $uid, profileImage: "$profile"}) {
     returning {
       email
       user_Name
@@ -83,8 +86,10 @@ class UserAuthImplimentaion implements UserAuthenticationService {
   Future<StateResponse> userLogout() async {
     try {
       await FirebaseAuth.instance.signOut();
+      log('user signout');
       return StateResponse.success(null);
     } catch (e) {
+      log('sinout error $e');
       return StateResponse.error('SignOut Failed');
     }
   }
@@ -92,15 +97,30 @@ class UserAuthImplimentaion implements UserAuthenticationService {
 //check user login or not
   @override
   Future<StateResponse<String?>> checkLogin() async {
+    log('imp enter');
     try {
+      log('impl check');
       User? currentUser = FirebaseAuth.instance.currentUser;
+      log('check $currentUser');
       if (currentUser != null) {
         return StateResponse.success(currentUser.uid);
       } else {
+        log(' no user');
         return StateResponse.error('User not loged');
       }
     } catch (e) {
+      log('check erro $e');
       return StateResponse.error('Error on checking login');
+    }
+  }
+
+  @override
+  Future<StateResponse> forgotPassword({required String email}) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return StateResponse.success(null);
+    } catch (e) {
+      return StateResponse.error('failed to send email to reset');
     }
   }
 }

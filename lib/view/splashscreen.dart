@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,14 +18,17 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log('build');
     BlocProvider.of<UserAuthenticationBloc>(context)
         .add(const UserAuthenticationEvent.checkUserLoged());
     return Scaffold(
         body: MultiBlocListener(
       listeners: [
         BlocListener<UserprofileBloc, UserprofileState>(
-          listener: (context, state) async {
+          listener: (context, state) {
+            log('profile state ${state.userProfile!.status}');
             if (state.userProfile!.status == StateStatus.success) {
+              log('navigate home');
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => const HomePage(),
               ));
@@ -32,11 +37,14 @@ class SplashScreen extends StatelessWidget {
         ),
         BlocListener<UserAuthenticationBloc, UserAuthenticationState>(
           listener: (context, state) {
+            log('auth state ${state.logedUser!.status}');
             if (state.logedUser!.status == StateStatus.success) {
+              log('auth success');
               BlocProvider.of<UserprofileBloc>(context).add(
                   UserprofileEvent.getuserprofile(
                       userId: state.logedUser!.data!));
-            } else if (state.logedUser!.status == StateStatus.success) {
+            } else if (state.logedUser!.status == StateStatus.error) {
+              log('auth error');
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => const LoginPage(),
               ));

@@ -20,8 +20,11 @@ mixin _$UserAuthenticationEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(List<TextEditingController> controllers)
         userLogin,
-    required TResult Function(List<TextEditingController> controllers)
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
         userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) =>
@@ -29,7 +32,10 @@ mixin _$UserAuthenticationEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
-    TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) =>
@@ -37,7 +43,10 @@ mixin _$UserAuthenticationEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
-    TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
@@ -47,6 +56,8 @@ mixin _$UserAuthenticationEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) =>
@@ -55,6 +66,8 @@ mixin _$UserAuthenticationEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) =>
@@ -63,6 +76,8 @@ mixin _$UserAuthenticationEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
@@ -164,8 +179,11 @@ class _$userLoginImpl implements _userLogin {
   TResult when<TResult extends Object?>({
     required TResult Function(List<TextEditingController> controllers)
         userLogin,
-    required TResult Function(List<TextEditingController> controllers)
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
         userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
@@ -176,7 +194,10 @@ class _$userLoginImpl implements _userLogin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
-    TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
@@ -187,7 +208,10 @@ class _$userLoginImpl implements _userLogin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
-    TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
@@ -203,6 +227,8 @@ class _$userLoginImpl implements _userLogin {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
@@ -214,6 +240,8 @@ class _$userLoginImpl implements _userLogin {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
@@ -225,6 +253,8 @@ class _$userLoginImpl implements _userLogin {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
@@ -253,7 +283,7 @@ abstract class _$$userSignupImplCopyWith<$Res> {
           _$userSignupImpl value, $Res Function(_$userSignupImpl) then) =
       __$$userSignupImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<TextEditingController> controllers});
+  $Res call({List<TextEditingController> controllers, XFile? profile});
 }
 
 /// @nodoc
@@ -268,12 +298,17 @@ class __$$userSignupImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? controllers = null,
+    Object? profile = freezed,
   }) {
     return _then(_$userSignupImpl(
       controllers: null == controllers
           ? _value._controllers
           : controllers // ignore: cast_nullable_to_non_nullable
               as List<TextEditingController>,
+      profile: freezed == profile
+          ? _value.profile
+          : profile // ignore: cast_nullable_to_non_nullable
+              as XFile?,
     ));
   }
 }
@@ -282,7 +317,8 @@ class __$$userSignupImplCopyWithImpl<$Res>
 
 class _$userSignupImpl implements _userSignup {
   const _$userSignupImpl(
-      {required final List<TextEditingController> controllers})
+      {required final List<TextEditingController> controllers,
+      required this.profile})
       : _controllers = controllers;
 
   final List<TextEditingController> _controllers;
@@ -294,8 +330,11 @@ class _$userSignupImpl implements _userSignup {
   }
 
   @override
+  final XFile? profile;
+
+  @override
   String toString() {
-    return 'UserAuthenticationEvent.userSignUP(controllers: $controllers)';
+    return 'UserAuthenticationEvent.userSignUP(controllers: $controllers, profile: $profile)';
   }
 
   @override
@@ -304,12 +343,13 @@ class _$userSignupImpl implements _userSignup {
         (other.runtimeType == runtimeType &&
             other is _$userSignupImpl &&
             const DeepCollectionEquality()
-                .equals(other._controllers, _controllers));
+                .equals(other._controllers, _controllers) &&
+            (identical(other.profile, profile) || other.profile == profile));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_controllers));
+      runtimeType, const DeepCollectionEquality().hash(_controllers), profile);
 
   @JsonKey(ignore: true)
   @override
@@ -322,36 +362,45 @@ class _$userSignupImpl implements _userSignup {
   TResult when<TResult extends Object?>({
     required TResult Function(List<TextEditingController> controllers)
         userLogin,
-    required TResult Function(List<TextEditingController> controllers)
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
         userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
-    return userSignUP(controllers);
+    return userSignUP(controllers, profile);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
-    TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
-    return userSignUP?.call(controllers);
+    return userSignUP?.call(controllers, profile);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
-    TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
   }) {
     if (userSignUP != null) {
-      return userSignUP(controllers);
+      return userSignUP(controllers, profile);
     }
     return orElse();
   }
@@ -361,6 +410,8 @@ class _$userSignupImpl implements _userSignup {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
@@ -372,6 +423,8 @@ class _$userSignupImpl implements _userSignup {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
@@ -383,6 +436,8 @@ class _$userSignupImpl implements _userSignup {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
@@ -396,13 +451,311 @@ class _$userSignupImpl implements _userSignup {
 
 abstract class _userSignup implements UserAuthenticationEvent {
   const factory _userSignup(
-          {required final List<TextEditingController> controllers}) =
-      _$userSignupImpl;
+      {required final List<TextEditingController> controllers,
+      required final XFile? profile}) = _$userSignupImpl;
 
   List<TextEditingController> get controllers;
+  XFile? get profile;
   @JsonKey(ignore: true)
   _$$userSignupImplCopyWith<_$userSignupImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$fotgotPasswordImplCopyWith<$Res> {
+  factory _$$fotgotPasswordImplCopyWith(_$fotgotPasswordImpl value,
+          $Res Function(_$fotgotPasswordImpl) then) =
+      __$$fotgotPasswordImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String email});
+}
+
+/// @nodoc
+class __$$fotgotPasswordImplCopyWithImpl<$Res>
+    extends _$UserAuthenticationEventCopyWithImpl<$Res, _$fotgotPasswordImpl>
+    implements _$$fotgotPasswordImplCopyWith<$Res> {
+  __$$fotgotPasswordImplCopyWithImpl(
+      _$fotgotPasswordImpl _value, $Res Function(_$fotgotPasswordImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+  }) {
+    return _then(_$fotgotPasswordImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$fotgotPasswordImpl implements _fotgotPassword {
+  const _$fotgotPasswordImpl({required this.email});
+
+  @override
+  final String email;
+
+  @override
+  String toString() {
+    return 'UserAuthenticationEvent.forgotPassword(email: $email)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$fotgotPasswordImpl &&
+            (identical(other.email, email) || other.email == email));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, email);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$fotgotPasswordImplCopyWith<_$fotgotPasswordImpl> get copyWith =>
+      __$$fotgotPasswordImplCopyWithImpl<_$fotgotPasswordImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<TextEditingController> controllers)
+        userLogin,
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
+        userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
+    required TResult Function() checkUserLoged,
+    required TResult Function() userLogout,
+  }) {
+    return forgotPassword(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<TextEditingController> controllers)? userLogin,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
+    TResult? Function()? checkUserLoged,
+    TResult? Function()? userLogout,
+  }) {
+    return forgotPassword?.call(email);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<TextEditingController> controllers)? userLogin,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
+    TResult Function()? checkUserLoged,
+    TResult Function()? userLogout,
+    required TResult orElse(),
+  }) {
+    if (forgotPassword != null) {
+      return forgotPassword(email);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_userLogin value) userLogin,
+    required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
+    required TResult Function(_userLogout value) userLogout,
+  }) {
+    return forgotPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_userLogin value)? userLogin,
+    TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
+    TResult? Function(_userLogout value)? userLogout,
+  }) {
+    return forgotPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_userLogin value)? userLogin,
+    TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
+    TResult Function(_userLogout value)? userLogout,
+    required TResult orElse(),
+  }) {
+    if (forgotPassword != null) {
+      return forgotPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _fotgotPassword implements UserAuthenticationEvent {
+  const factory _fotgotPassword({required final String email}) =
+      _$fotgotPasswordImpl;
+
+  String get email;
+  @JsonKey(ignore: true)
+  _$$fotgotPasswordImplCopyWith<_$fotgotPasswordImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$pickImageFromGalleryImplCopyWith<$Res> {
+  factory _$$pickImageFromGalleryImplCopyWith(_$pickImageFromGalleryImpl value,
+          $Res Function(_$pickImageFromGalleryImpl) then) =
+      __$$pickImageFromGalleryImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$pickImageFromGalleryImplCopyWithImpl<$Res>
+    extends _$UserAuthenticationEventCopyWithImpl<$Res,
+        _$pickImageFromGalleryImpl>
+    implements _$$pickImageFromGalleryImplCopyWith<$Res> {
+  __$$pickImageFromGalleryImplCopyWithImpl(_$pickImageFromGalleryImpl _value,
+      $Res Function(_$pickImageFromGalleryImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
+  const _$pickImageFromGalleryImpl();
+
+  @override
+  String toString() {
+    return 'UserAuthenticationEvent.pickImageFromGallery()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$pickImageFromGalleryImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<TextEditingController> controllers)
+        userLogin,
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
+        userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
+    required TResult Function() checkUserLoged,
+    required TResult Function() userLogout,
+  }) {
+    return pickImageFromGallery();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<TextEditingController> controllers)? userLogin,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
+    TResult? Function()? checkUserLoged,
+    TResult? Function()? userLogout,
+  }) {
+    return pickImageFromGallery?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<TextEditingController> controllers)? userLogin,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
+    TResult Function()? checkUserLoged,
+    TResult Function()? userLogout,
+    required TResult orElse(),
+  }) {
+    if (pickImageFromGallery != null) {
+      return pickImageFromGallery();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_userLogin value) userLogin,
+    required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
+    required TResult Function(_userLogout value) userLogout,
+  }) {
+    return pickImageFromGallery(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_userLogin value)? userLogin,
+    TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
+    TResult? Function(_userLogout value)? userLogout,
+  }) {
+    return pickImageFromGallery?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_userLogin value)? userLogin,
+    TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
+    TResult Function(_userLogout value)? userLogout,
+    required TResult orElse(),
+  }) {
+    if (pickImageFromGallery != null) {
+      return pickImageFromGallery(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _pickImageFromGallery implements UserAuthenticationEvent {
+  const factory _pickImageFromGallery() = _$pickImageFromGalleryImpl;
 }
 
 /// @nodoc
@@ -445,8 +798,11 @@ class _$checkUserLogedImpl implements _checkUserLoged {
   TResult when<TResult extends Object?>({
     required TResult Function(List<TextEditingController> controllers)
         userLogin,
-    required TResult Function(List<TextEditingController> controllers)
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
         userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
@@ -457,7 +813,10 @@ class _$checkUserLogedImpl implements _checkUserLoged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
-    TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
@@ -468,7 +827,10 @@ class _$checkUserLogedImpl implements _checkUserLoged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
-    TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
@@ -484,6 +846,8 @@ class _$checkUserLogedImpl implements _checkUserLoged {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
@@ -495,6 +859,8 @@ class _$checkUserLogedImpl implements _checkUserLoged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
@@ -506,6 +872,8 @@ class _$checkUserLogedImpl implements _checkUserLoged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
@@ -561,8 +929,11 @@ class _$userLogoutImpl implements _userLogout {
   TResult when<TResult extends Object?>({
     required TResult Function(List<TextEditingController> controllers)
         userLogin,
-    required TResult Function(List<TextEditingController> controllers)
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
         userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
   }) {
@@ -573,7 +944,10 @@ class _$userLogoutImpl implements _userLogout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(List<TextEditingController> controllers)? userLogin,
-    TResult? Function(List<TextEditingController> controllers)? userSignUP,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
   }) {
@@ -584,7 +958,10 @@ class _$userLogoutImpl implements _userLogout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(List<TextEditingController> controllers)? userLogin,
-    TResult Function(List<TextEditingController> controllers)? userSignUP,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
     required TResult orElse(),
@@ -600,6 +977,8 @@ class _$userLogoutImpl implements _userLogout {
   TResult map<TResult extends Object?>({
     required TResult Function(_userLogin value) userLogin,
     required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
   }) {
@@ -611,6 +990,8 @@ class _$userLogoutImpl implements _userLogout {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_userLogin value)? userLogin,
     TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
   }) {
@@ -622,6 +1003,8 @@ class _$userLogoutImpl implements _userLogout {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_userLogin value)? userLogin,
     TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
     required TResult orElse(),
@@ -642,6 +1025,11 @@ mixin _$UserAuthenticationState {
   StateResponse<String>? get userSignUp => throw _privateConstructorUsedError;
   StateResponse<String>? get loginState => throw _privateConstructorUsedError;
   StateResponse<String?>? get logedUser => throw _privateConstructorUsedError;
+  StateResponse<dynamic> get userLogout => throw _privateConstructorUsedError;
+  StateResponse<XFile?> get profileImageFile =>
+      throw _privateConstructorUsedError;
+  StateResponse<dynamic> get forgotPassword =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserAuthenticationStateCopyWith<UserAuthenticationState> get copyWith =>
@@ -657,7 +1045,10 @@ abstract class $UserAuthenticationStateCopyWith<$Res> {
   $Res call(
       {StateResponse<String>? userSignUp,
       StateResponse<String>? loginState,
-      StateResponse<String?>? logedUser});
+      StateResponse<String?>? logedUser,
+      StateResponse<dynamic> userLogout,
+      StateResponse<XFile?> profileImageFile,
+      StateResponse<dynamic> forgotPassword});
 }
 
 /// @nodoc
@@ -677,6 +1068,9 @@ class _$UserAuthenticationStateCopyWithImpl<$Res,
     Object? userSignUp = freezed,
     Object? loginState = freezed,
     Object? logedUser = freezed,
+    Object? userLogout = null,
+    Object? profileImageFile = null,
+    Object? forgotPassword = null,
   }) {
     return _then(_value.copyWith(
       userSignUp: freezed == userSignUp
@@ -691,6 +1085,18 @@ class _$UserAuthenticationStateCopyWithImpl<$Res,
           ? _value.logedUser
           : logedUser // ignore: cast_nullable_to_non_nullable
               as StateResponse<String?>?,
+      userLogout: null == userLogout
+          ? _value.userLogout
+          : userLogout // ignore: cast_nullable_to_non_nullable
+              as StateResponse<dynamic>,
+      profileImageFile: null == profileImageFile
+          ? _value.profileImageFile
+          : profileImageFile // ignore: cast_nullable_to_non_nullable
+              as StateResponse<XFile?>,
+      forgotPassword: null == forgotPassword
+          ? _value.forgotPassword
+          : forgotPassword // ignore: cast_nullable_to_non_nullable
+              as StateResponse<dynamic>,
     ) as $Val);
   }
 }
@@ -707,7 +1113,10 @@ abstract class _$$userAuthenticationStatelImplCopyWith<$Res>
   $Res call(
       {StateResponse<String>? userSignUp,
       StateResponse<String>? loginState,
-      StateResponse<String?>? logedUser});
+      StateResponse<String?>? logedUser,
+      StateResponse<dynamic> userLogout,
+      StateResponse<XFile?> profileImageFile,
+      StateResponse<dynamic> forgotPassword});
 }
 
 /// @nodoc
@@ -726,6 +1135,9 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
     Object? userSignUp = freezed,
     Object? loginState = freezed,
     Object? logedUser = freezed,
+    Object? userLogout = null,
+    Object? profileImageFile = null,
+    Object? forgotPassword = null,
   }) {
     return _then(_$userAuthenticationStatelImpl(
       userSignUp: freezed == userSignUp
@@ -740,6 +1152,18 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
           ? _value.logedUser
           : logedUser // ignore: cast_nullable_to_non_nullable
               as StateResponse<String?>?,
+      userLogout: null == userLogout
+          ? _value.userLogout
+          : userLogout // ignore: cast_nullable_to_non_nullable
+              as StateResponse<dynamic>,
+      profileImageFile: null == profileImageFile
+          ? _value.profileImageFile
+          : profileImageFile // ignore: cast_nullable_to_non_nullable
+              as StateResponse<XFile?>,
+      forgotPassword: null == forgotPassword
+          ? _value.forgotPassword
+          : forgotPassword // ignore: cast_nullable_to_non_nullable
+              as StateResponse<dynamic>,
     ));
   }
 }
@@ -750,7 +1174,10 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
   const _$userAuthenticationStatelImpl(
       {required this.userSignUp,
       required this.loginState,
-      required this.logedUser});
+      required this.logedUser,
+      required this.userLogout,
+      required this.profileImageFile,
+      required this.forgotPassword});
 
   @override
   final StateResponse<String>? userSignUp;
@@ -758,10 +1185,16 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
   final StateResponse<String>? loginState;
   @override
   final StateResponse<String?>? logedUser;
+  @override
+  final StateResponse<dynamic> userLogout;
+  @override
+  final StateResponse<XFile?> profileImageFile;
+  @override
+  final StateResponse<dynamic> forgotPassword;
 
   @override
   String toString() {
-    return 'UserAuthenticationState(userSignUp: $userSignUp, loginState: $loginState, logedUser: $logedUser)';
+    return 'UserAuthenticationState(userSignUp: $userSignUp, loginState: $loginState, logedUser: $logedUser, userLogout: $userLogout, profileImageFile: $profileImageFile, forgotPassword: $forgotPassword)';
   }
 
   @override
@@ -774,12 +1207,18 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
             (identical(other.loginState, loginState) ||
                 other.loginState == loginState) &&
             (identical(other.logedUser, logedUser) ||
-                other.logedUser == logedUser));
+                other.logedUser == logedUser) &&
+            (identical(other.userLogout, userLogout) ||
+                other.userLogout == userLogout) &&
+            (identical(other.profileImageFile, profileImageFile) ||
+                other.profileImageFile == profileImageFile) &&
+            (identical(other.forgotPassword, forgotPassword) ||
+                other.forgotPassword == forgotPassword));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userSignUp, loginState, logedUser);
+  int get hashCode => Object.hash(runtimeType, userSignUp, loginState,
+      logedUser, userLogout, profileImageFile, forgotPassword);
 
   @JsonKey(ignore: true)
   @override
@@ -793,7 +1232,10 @@ abstract class userAuthenticationStatel implements UserAuthenticationState {
   const factory userAuthenticationStatel(
           {required final StateResponse<String>? userSignUp,
           required final StateResponse<String>? loginState,
-          required final StateResponse<String?>? logedUser}) =
+          required final StateResponse<String?>? logedUser,
+          required final StateResponse<dynamic> userLogout,
+          required final StateResponse<XFile?> profileImageFile,
+          required final StateResponse<dynamic> forgotPassword}) =
       _$userAuthenticationStatelImpl;
 
   @override
@@ -802,6 +1244,12 @@ abstract class userAuthenticationStatel implements UserAuthenticationState {
   StateResponse<String>? get loginState;
   @override
   StateResponse<String?>? get logedUser;
+  @override
+  StateResponse<dynamic> get userLogout;
+  @override
+  StateResponse<XFile?> get profileImageFile;
+  @override
+  StateResponse<dynamic> get forgotPassword;
   @override
   @JsonKey(ignore: true)
   _$$userAuthenticationStatelImplCopyWith<_$userAuthenticationStatelImpl>

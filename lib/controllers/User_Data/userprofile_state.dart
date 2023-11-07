@@ -8,6 +8,7 @@ class UserprofileState with _$UserprofileState {
     required StateResponse<List<PostsBySenderid?>>? userPosts,
     required List<String> followers,
     required List<String> following,
+    required PostSelection postSelection,
   }) = userprofileState;
 
   factory UserprofileState.initial() => userprofileState(
@@ -15,5 +16,6 @@ class UserprofileState with _$UserprofileState {
       following: [],
       userProfile: StateResponse.intial(),
       sharedPost: StateResponse.intial(),
-      userPosts: StateResponse.intial());
+      userPosts: StateResponse.intial(),
+      postSelection: PostSelection.posts);
 }

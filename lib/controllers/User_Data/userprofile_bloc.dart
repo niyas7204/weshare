@@ -2,6 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:get/get.dart';
+import 'package:weshare/components/alert_diologe.dart';
 
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/core/helpers/enums.dart';
@@ -15,6 +17,7 @@ part 'userprofile_state.dart';
 part 'userprofile_bloc.freezed.dart';
 
 class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
+  final AlertdiologeWidgets alertdcontroller = Get.put(AlertdiologeWidgets());
   final FollowService followService;
 
   final UserDataImplimentation userDataImplimentation;
@@ -35,6 +38,7 @@ class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
             sharedPost: StateResponse.success(result.data!.friedsSharedPost),
             userPosts: StateResponse.success(result.data!.userPosts)));
       } else if (result.status == StateStatus.error) {
+        log(result.errorMessage!);
         emit(state.copyWith(
             userPosts: StateResponse.error(result.errorMessage),
             sharedPost: StateResponse.error(result.errorMessage),
@@ -42,17 +46,12 @@ class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
       }
     });
     on<followAnAccount>((event, emit) async {
-      log(event.following.toString());
-      log(event.acountId);
       if (event.following.contains(event.acountId)) {
-        log('unfollowed');
         await followService.unfollowAccount(
-            accoutId: event.acountId, userId: event.userId);
+            accountId: event.acountId, userId: event.userId);
       } else {
-        log('followed');
-        // call to delete
         await followService.followAccount(
-            accoutId: event.acountId, userId: event.userId);
+            accountId: event.acountId, userId: event.userId);
       }
       log('call');
 
@@ -61,8 +60,6 @@ class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
       final result = await userDataImplimentation.getuser(userid: event.userId);
 
       if (result.status == StateStatus.success) {
-        log('followings ${result.data!.following}');
-        log('success');
         emit(state.copyWith(
             followers: result.data!.followers,
             following: result.data!.following,
@@ -75,6 +72,9 @@ class UserprofileBloc extends Bloc<UserprofileEvent, UserprofileState> {
             sharedPost: StateResponse.error(result.errorMessage),
             userProfile: StateResponse.error(result.errorMessage)));
       }
+    });
+    on<_changePostSelection>((event, emit) {
+      emit(state.copyWith(postSelection: event.selection));
     });
   }
 }

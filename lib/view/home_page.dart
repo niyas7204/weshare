@@ -9,9 +9,7 @@ import 'package:weshare/view/search_page.dart';
 import 'package:weshare/view/upload_post.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    super.key,
-  });
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

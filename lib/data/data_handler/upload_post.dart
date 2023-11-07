@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:weshare/client/graphql_client.dart';
+import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/data/repository/upload_image.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -47,7 +47,7 @@ class UploadPostImplimentaion implements UploadPostSeivice {
       {required PostsBySenderid post}) async {
     log('post ${post.senderName} ${post.senderId}  ${post.postId}');
     final String mutation = '''mutation MyMutation {
-  insert_post(objects: {senderId: "${post.senderId}", senderName: "${post.senderName}", postId: "${post.postId}",tags:${post.tags},likes: ${post.likes}, imageFeed: "${post.imageFeed}", textFeed: "${post.textFeed}"}) {
+  insert_post(objects: {senderId: "${post.senderId}", senderName: "${post.senderName}", postId: "${post.postId}", imageFeed: "${post.imageFeed}", textFeed: "${post.textFeed}"}) {
     returning {
       postId
       senderId

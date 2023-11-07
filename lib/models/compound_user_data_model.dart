@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 class Data {
   List<UserElement> user;
 
@@ -22,8 +20,10 @@ class UserElement {
   List<PostsBySenderid?>? postsByuser;
   List<Following>? following;
   List<Followers>? follower;
+  List<Tags>? tags;
 
   UserElement({
+    required this.tags,
     required this.userName,
     required this.userId,
     required this.profileImage,
@@ -34,18 +34,17 @@ class UserElement {
   });
 
   factory UserElement.fromMap(Map<String, dynamic> map) {
-    try {
-      List<PostsBySenderid> posts = List<PostsBySenderid>.from(
-          map['postsBySenderid']
-                  ?.map((post) => PostsBySenderid.fromMap(post)) ??
-              []);
-      List<Following> following = List<Following>.from(
-          map['friends']?.map((following) => Following.fromMap(following)) ??
-              []);
-      List<Followers> follower = List<Followers>.from(map['friendsByHead']
-              ?.map((follower) => Followers.fromMap(follower)) ??
-          []);
-      return UserElement(
+    List<PostsBySenderid> posts = List<PostsBySenderid>.from(
+        map['postsBySenderid']?.map((post) => PostsBySenderid.fromMap(post)) ??
+            []);
+    List<Following> following = List<Following>.from(
+        map['friends']?.map((following) => Following.fromMap(following)) ?? []);
+    List<Followers> follower = List<Followers>.from(
+        map['friendsByHead']?.map((follower) => Followers.fromMap(follower)) ??
+            []);
+    List<Tags> tagedPost = List<Tags>.from(
+        map['post_tags']?.map((tags) => Tags.fromMap(tags)) ?? []);
+    return UserElement(
         userName: map['userName'],
         userId: map['userId'],
         profileImage: map['profileImage'],
@@ -53,29 +52,16 @@ class UserElement {
         postsByuser: posts,
         following: following,
         follower: follower,
-      );
-    } catch (e) {
-      log('userelement $e');
-      List<PostsBySenderid> posts = List<PostsBySenderid>.from(
-          map['postsBySenderid']
-                  ?.map((post) => PostsBySenderid.fromMap(post)) ??
-              []);
-      List<Following> following = List<Following>.from(
-          map['friends']?.map((following) => Following.fromMap(following)) ??
-              []);
-      List<Followers> follower = List<Followers>.from(map['friendsByHead']
-              ?.map((follower) => Followers.fromMap(follower)) ??
-          []);
-      return UserElement(
-        userName: map['userName'],
-        userId: map['userId'],
-        profileImage: map['profileImage'],
-        email: map['email'],
-        postsByuser: posts,
-        following: following,
-        follower: follower,
-      );
-    }
+        tags: tagedPost);
+  }
+}
+
+class Tags {
+  PostsBySenderid post;
+  Tags({required this.post});
+  factory Tags.fromMap(Map<String, dynamic> map) {
+    PostsBySenderid posts = PostsBySenderid.fromMap(map['post']);
+    return Tags(post: posts);
   }
 }
 
@@ -113,31 +99,27 @@ class UserByHeadClass {
 
 class PostsBySenderid {
   String? textFeed;
-  List<dynamic>? tags;
+
   String senderName;
   String senderId;
   String postId;
-  List<dynamic>? likes;
+
   String? imageFeed;
 
   PostsBySenderid({
     required this.textFeed,
-    required this.tags,
     required this.senderName,
     required this.senderId,
     required this.postId,
-    required this.likes,
     required this.imageFeed,
   });
 
   factory PostsBySenderid.fromMap(Map<String, dynamic> map) {
     return PostsBySenderid(
       textFeed: map['textFeed'],
-      tags: map['tags'],
       senderName: map['senderName'],
       senderId: map['senderId'],
       postId: map['postId'],
-      likes: map['likes'],
       imageFeed: map['imageFeed'],
     );
   }
@@ -154,3 +136,5 @@ class Followers {
     return Followers(user: UserByHeadClass.fromMap(map['user']));
   }
 }
+
+class TagedPost {}

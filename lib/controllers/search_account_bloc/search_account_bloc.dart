@@ -14,14 +14,17 @@ class SearchAccountBloc extends Bloc<SearchAccountEvent, SearchAccountState> {
   SearchAccountBloc(this.searchAccountService)
       : super(SearchAccountState.initial()) {
     on<SearchAccountEvent>((event, emit) async {
-      emit(state.copyWith(searchResult: StateResponse.loading()));
-      final result = await searchAccountService.searchAccount(
-          value: event.value, userId: event.userId);
-      if (result.status == StateStatus.success) {
-        emit(state.copyWith(searchResult: StateResponse.success(result.data)));
-      } else if (result.status == StateStatus.error) {
-        emit(
-            state.copyWith(searchResult: StateResponse.error('search failed')));
+      if (event.value.isNotEmpty) {
+        emit(state.copyWith(searchResult: StateResponse.loading()));
+        final result = await searchAccountService.searchAccount(
+            value: event.value, userId: event.userId);
+        if (result.status == StateStatus.success) {
+          emit(
+              state.copyWith(searchResult: StateResponse.success(result.data)));
+        } else if (result.status == StateStatus.error) {
+          emit(state.copyWith(
+              searchResult: StateResponse.error('search failed')));
+        }
       }
     });
   }

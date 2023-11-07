@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -64,10 +65,46 @@ class SignUpPage extends StatelessWidget {
                     children: [
                       AppLogo.baseLogo,
                       CustomTexts.header1('Sign Up'),
+                      Stack(
+                        children: [
+                          state.profileImageFile.data != null
+                              ? CircleAvatar(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 121, 139, 148),
+                                  radius: 70,
+                                  backgroundImage: FileImage(
+                                      File(state.profileImageFile.data!.path)))
+                              : const CircleAvatar(
+                                  backgroundColor:
+                                      Color.fromARGB(255, 121, 139, 148),
+                                  radius: 70,
+                                  child: Icon(
+                                    Icons.person,
+                                    size: 70,
+                                  ),
+                                ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: IconButton(
+                                onPressed: () {
+                                  BlocProvider.of<UserAuthenticationBloc>(
+                                          context)
+                                      .add(const UserAuthenticationEvent
+                                          .pickImageFromGallery());
+                                },
+                                icon: const Icon(
+                                  Icons.camera_alt_outlined,
+                                  size: 40,
+                                )),
+                          )
+                        ],
+                      ),
                       Form(
                           key: formKey,
                           child: ListView.builder(
                               shrinkWrap: true,
+                              physics: const ScrollPhysics(),
                               itemCount: labels.length,
                               itemBuilder: (context, index) => CustomTextField(
                                   label: labels[index],
@@ -78,7 +115,8 @@ class SignUpPage extends StatelessWidget {
                           onPressed: () {
                             BlocProvider.of<UserAuthenticationBloc>(context)
                                 .add(UserAuthenticationEvent.userSignUP(
-                                    controllers: controllers));
+                                    controllers: controllers,
+                                    profile: state.profileImageFile.data));
                           },
                           child: CustomTexts.labelText('Sign UP')),
                     ],

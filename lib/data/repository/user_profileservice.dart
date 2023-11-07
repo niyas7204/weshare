@@ -7,7 +7,7 @@ abstract class CompountService {
 
 abstract class FollowService {
   Future<StateResponse> followAccount(
-      {required String accoutId, required String userId});
+      {required String accountId, required String userId});
   Future<StateResponse> unfollowAccount(
-      {required String accoutId, required String userId});
+      {required String accountId, required String userId});
 }

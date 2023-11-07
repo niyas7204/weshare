@@ -10,12 +10,25 @@ class GetUserQuery {
     email
     postsBySenderid {
       textFeed
-      tags
       senderName
       senderId
       postId
-      likes
       imageFeed
+    }
+    friendsByHead {
+      user {
+        user_Name
+        userId
+        profileImage
+        email
+        postsBySenderid {
+          textFeed
+          senderName
+          senderId
+          postId
+          imageFeed
+        }
+      }
     }
     friends {
       userByHead {
@@ -25,31 +38,24 @@ class GetUserQuery {
         email
         postsBySenderid {
           textFeed
-          tags
           senderName
           senderId
           postId
-          likes
           imageFeed
         }
       }
     }
-    friendsByHead {
-      user {
-        email
-        postsBySenderid {
-          textFeed
-          tags
-          senderName
-          senderId
-          postId
-          likes
-          imageFeed
-        }
+    post_tags(where: {user_Id: {_eq: "$userId"}}) {
+      post {
+        imageFeed
+        postId
+        senderId
+        senderName
+        textFeed
       }
     }
   }
-}
+  }
 ''';
   }
 }

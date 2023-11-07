@@ -16,10 +16,11 @@ class UploadPostBloc extends Bloc<UploadPostEvent, UploadPostState> {
   UploadPostBloc(this.uploadPostSeivice) : super(UploadPostState.initial()) {
     //event to took image from gallery
     on<_pickImageFromGallery>((event, emit) async {
-      final result = await uploadPostSeivice.pickImageFromGallery();
       emit(state.copyWith(
           imageFile: StateResponse.loading(),
           uploadPoststate: StateResponse.intial()));
+      final result = await uploadPostSeivice.pickImageFromGallery();
+
       if (result.status == StateStatus.success) {
         emit(state.copyWith(imageFile: StateResponse.success(result.data)));
       } else if (result.status == StateStatus.error) {
@@ -62,8 +63,6 @@ class UploadPostBloc extends Bloc<UploadPostEvent, UploadPostState> {
               senderName: event.userName,
               senderId: event.userId,
               postId: uid,
-              likes: [],
-              tags: event.tags,
               textFeed: event.textFeed,
               imageFeed: image);
           final response =

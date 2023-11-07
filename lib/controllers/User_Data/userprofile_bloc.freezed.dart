@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserprofileEvent {
-  String get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) getuserprofile,
+    required TResult Function(PostSelection selection) changePostSelection,
     required TResult Function(
             String acountId, String userId, List<String> following)
         followAnAccount,
@@ -28,6 +28,7 @@ mixin _$UserprofileEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId)? getuserprofile,
+    TResult? Function(PostSelection selection)? changePostSelection,
     TResult? Function(String acountId, String userId, List<String> following)?
         followAnAccount,
   }) =>
@@ -35,6 +36,7 @@ mixin _$UserprofileEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? getuserprofile,
+    TResult Function(PostSelection selection)? changePostSelection,
     TResult Function(String acountId, String userId, List<String> following)?
         followAnAccount,
     required TResult orElse(),
@@ -43,25 +45,24 @@ mixin _$UserprofileEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(getUserProfile value) getuserprofile,
+    required TResult Function(_changePostSelection value) changePostSelection,
     required TResult Function(followAnAccount value) followAnAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(getUserProfile value)? getuserprofile,
+    TResult? Function(_changePostSelection value)? changePostSelection,
     TResult? Function(followAnAccount value)? followAnAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(getUserProfile value)? getuserprofile,
+    TResult Function(_changePostSelection value)? changePostSelection,
     TResult Function(followAnAccount value)? followAnAccount,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $UserprofileEventCopyWith<UserprofileEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -70,8 +71,6 @@ abstract class $UserprofileEventCopyWith<$Res> {
   factory $UserprofileEventCopyWith(
           UserprofileEvent value, $Res Function(UserprofileEvent) then) =
       _$UserprofileEventCopyWithImpl<$Res, UserprofileEvent>;
-  @useResult
-  $Res call({String userId});
 }
 
 /// @nodoc
@@ -83,28 +82,13 @@ class _$UserprofileEventCopyWithImpl<$Res, $Val extends UserprofileEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userId = null,
-  }) {
-    return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$getUserProfileImplCopyWith<$Res>
-    implements $UserprofileEventCopyWith<$Res> {
+abstract class _$$getUserProfileImplCopyWith<$Res> {
   factory _$$getUserProfileImplCopyWith(_$getUserProfileImpl value,
           $Res Function(_$getUserProfileImpl) then) =
       __$$getUserProfileImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String userId});
 }
@@ -166,6 +150,7 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) getuserprofile,
+    required TResult Function(PostSelection selection) changePostSelection,
     required TResult Function(
             String acountId, String userId, List<String> following)
         followAnAccount,
@@ -177,6 +162,7 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId)? getuserprofile,
+    TResult? Function(PostSelection selection)? changePostSelection,
     TResult? Function(String acountId, String userId, List<String> following)?
         followAnAccount,
   }) {
@@ -187,6 +173,7 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? getuserprofile,
+    TResult Function(PostSelection selection)? changePostSelection,
     TResult Function(String acountId, String userId, List<String> following)?
         followAnAccount,
     required TResult orElse(),
@@ -201,6 +188,7 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(getUserProfile value) getuserprofile,
+    required TResult Function(_changePostSelection value) changePostSelection,
     required TResult Function(followAnAccount value) followAnAccount,
   }) {
     return getuserprofile(this);
@@ -210,6 +198,7 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(getUserProfile value)? getuserprofile,
+    TResult? Function(_changePostSelection value)? changePostSelection,
     TResult? Function(followAnAccount value)? followAnAccount,
   }) {
     return getuserprofile?.call(this);
@@ -219,6 +208,7 @@ class _$getUserProfileImpl implements getUserProfile {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(getUserProfile value)? getuserprofile,
+    TResult Function(_changePostSelection value)? changePostSelection,
     TResult Function(followAnAccount value)? followAnAccount,
     required TResult orElse(),
   }) {
@@ -233,21 +223,163 @@ abstract class getUserProfile implements UserprofileEvent {
   const factory getUserProfile({required final String userId}) =
       _$getUserProfileImpl;
 
-  @override
   String get userId;
-  @override
   @JsonKey(ignore: true)
   _$$getUserProfileImplCopyWith<_$getUserProfileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$followAnAccountImplCopyWith<$Res>
-    implements $UserprofileEventCopyWith<$Res> {
+abstract class _$$changePostSelectionImplCopyWith<$Res> {
+  factory _$$changePostSelectionImplCopyWith(_$changePostSelectionImpl value,
+          $Res Function(_$changePostSelectionImpl) then) =
+      __$$changePostSelectionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PostSelection selection});
+}
+
+/// @nodoc
+class __$$changePostSelectionImplCopyWithImpl<$Res>
+    extends _$UserprofileEventCopyWithImpl<$Res, _$changePostSelectionImpl>
+    implements _$$changePostSelectionImplCopyWith<$Res> {
+  __$$changePostSelectionImplCopyWithImpl(_$changePostSelectionImpl _value,
+      $Res Function(_$changePostSelectionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selection = null,
+  }) {
+    return _then(_$changePostSelectionImpl(
+      selection: null == selection
+          ? _value.selection
+          : selection // ignore: cast_nullable_to_non_nullable
+              as PostSelection,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$changePostSelectionImpl implements _changePostSelection {
+  const _$changePostSelectionImpl({required this.selection});
+
+  @override
+  final PostSelection selection;
+
+  @override
+  String toString() {
+    return 'UserprofileEvent.changePostSelection(selection: $selection)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$changePostSelectionImpl &&
+            (identical(other.selection, selection) ||
+                other.selection == selection));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, selection);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$changePostSelectionImplCopyWith<_$changePostSelectionImpl> get copyWith =>
+      __$$changePostSelectionImplCopyWithImpl<_$changePostSelectionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String userId) getuserprofile,
+    required TResult Function(PostSelection selection) changePostSelection,
+    required TResult Function(
+            String acountId, String userId, List<String> following)
+        followAnAccount,
+  }) {
+    return changePostSelection(selection);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String userId)? getuserprofile,
+    TResult? Function(PostSelection selection)? changePostSelection,
+    TResult? Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
+  }) {
+    return changePostSelection?.call(selection);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String userId)? getuserprofile,
+    TResult Function(PostSelection selection)? changePostSelection,
+    TResult Function(String acountId, String userId, List<String> following)?
+        followAnAccount,
+    required TResult orElse(),
+  }) {
+    if (changePostSelection != null) {
+      return changePostSelection(selection);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(getUserProfile value) getuserprofile,
+    required TResult Function(_changePostSelection value) changePostSelection,
+    required TResult Function(followAnAccount value) followAnAccount,
+  }) {
+    return changePostSelection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(getUserProfile value)? getuserprofile,
+    TResult? Function(_changePostSelection value)? changePostSelection,
+    TResult? Function(followAnAccount value)? followAnAccount,
+  }) {
+    return changePostSelection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(getUserProfile value)? getuserprofile,
+    TResult Function(_changePostSelection value)? changePostSelection,
+    TResult Function(followAnAccount value)? followAnAccount,
+    required TResult orElse(),
+  }) {
+    if (changePostSelection != null) {
+      return changePostSelection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _changePostSelection implements UserprofileEvent {
+  const factory _changePostSelection({required final PostSelection selection}) =
+      _$changePostSelectionImpl;
+
+  PostSelection get selection;
+  @JsonKey(ignore: true)
+  _$$changePostSelectionImplCopyWith<_$changePostSelectionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$followAnAccountImplCopyWith<$Res> {
   factory _$$followAnAccountImplCopyWith(_$followAnAccountImpl value,
           $Res Function(_$followAnAccountImpl) then) =
       __$$followAnAccountImplCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({String acountId, String userId, List<String> following});
 }
@@ -337,6 +469,7 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String userId) getuserprofile,
+    required TResult Function(PostSelection selection) changePostSelection,
     required TResult Function(
             String acountId, String userId, List<String> following)
         followAnAccount,
@@ -348,6 +481,7 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String userId)? getuserprofile,
+    TResult? Function(PostSelection selection)? changePostSelection,
     TResult? Function(String acountId, String userId, List<String> following)?
         followAnAccount,
   }) {
@@ -358,6 +492,7 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String userId)? getuserprofile,
+    TResult Function(PostSelection selection)? changePostSelection,
     TResult Function(String acountId, String userId, List<String> following)?
         followAnAccount,
     required TResult orElse(),
@@ -372,6 +507,7 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(getUserProfile value) getuserprofile,
+    required TResult Function(_changePostSelection value) changePostSelection,
     required TResult Function(followAnAccount value) followAnAccount,
   }) {
     return followAnAccount(this);
@@ -381,6 +517,7 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(getUserProfile value)? getuserprofile,
+    TResult? Function(_changePostSelection value)? changePostSelection,
     TResult? Function(followAnAccount value)? followAnAccount,
   }) {
     return followAnAccount?.call(this);
@@ -390,6 +527,7 @@ class _$followAnAccountImpl implements followAnAccount {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(getUserProfile value)? getuserprofile,
+    TResult Function(_changePostSelection value)? changePostSelection,
     TResult Function(followAnAccount value)? followAnAccount,
     required TResult orElse(),
   }) {
@@ -407,10 +545,8 @@ abstract class followAnAccount implements UserprofileEvent {
       required final List<String> following}) = _$followAnAccountImpl;
 
   String get acountId;
-  @override
   String get userId;
   List<String> get following;
-  @override
   @JsonKey(ignore: true)
   _$$followAnAccountImplCopyWith<_$followAnAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -426,6 +562,7 @@ mixin _$UserprofileState {
       throw _privateConstructorUsedError;
   List<String> get followers => throw _privateConstructorUsedError;
   List<String> get following => throw _privateConstructorUsedError;
+  PostSelection get postSelection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserprofileStateCopyWith<UserprofileState> get copyWith =>
@@ -443,7 +580,8 @@ abstract class $UserprofileStateCopyWith<$Res> {
       StateResponse<List<PostsBySenderid?>>? sharedPost,
       StateResponse<List<PostsBySenderid?>>? userPosts,
       List<String> followers,
-      List<String> following});
+      List<String> following,
+      PostSelection postSelection});
 }
 
 /// @nodoc
@@ -464,6 +602,7 @@ class _$UserprofileStateCopyWithImpl<$Res, $Val extends UserprofileState>
     Object? userPosts = freezed,
     Object? followers = null,
     Object? following = null,
+    Object? postSelection = null,
   }) {
     return _then(_value.copyWith(
       userProfile: freezed == userProfile
@@ -486,6 +625,10 @@ class _$UserprofileStateCopyWithImpl<$Res, $Val extends UserprofileState>
           ? _value.following
           : following // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      postSelection: null == postSelection
+          ? _value.postSelection
+          : postSelection // ignore: cast_nullable_to_non_nullable
+              as PostSelection,
     ) as $Val);
   }
 }
@@ -503,7 +646,8 @@ abstract class _$$userprofileStateImplCopyWith<$Res>
       StateResponse<List<PostsBySenderid?>>? sharedPost,
       StateResponse<List<PostsBySenderid?>>? userPosts,
       List<String> followers,
-      List<String> following});
+      List<String> following,
+      PostSelection postSelection});
 }
 
 /// @nodoc
@@ -522,6 +666,7 @@ class __$$userprofileStateImplCopyWithImpl<$Res>
     Object? userPosts = freezed,
     Object? followers = null,
     Object? following = null,
+    Object? postSelection = null,
   }) {
     return _then(_$userprofileStateImpl(
       userProfile: freezed == userProfile
@@ -544,6 +689,10 @@ class __$$userprofileStateImplCopyWithImpl<$Res>
           ? _value._following
           : following // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      postSelection: null == postSelection
+          ? _value.postSelection
+          : postSelection // ignore: cast_nullable_to_non_nullable
+              as PostSelection,
     ));
   }
 }
@@ -556,7 +705,8 @@ class _$userprofileStateImpl implements userprofileState {
       required this.sharedPost,
       required this.userPosts,
       required final List<String> followers,
-      required final List<String> following})
+      required final List<String> following,
+      required this.postSelection})
       : _followers = followers,
         _following = following;
 
@@ -583,8 +733,11 @@ class _$userprofileStateImpl implements userprofileState {
   }
 
   @override
+  final PostSelection postSelection;
+
+  @override
   String toString() {
-    return 'UserprofileState(userProfile: $userProfile, sharedPost: $sharedPost, userPosts: $userPosts, followers: $followers, following: $following)';
+    return 'UserprofileState(userProfile: $userProfile, sharedPost: $sharedPost, userPosts: $userPosts, followers: $followers, following: $following, postSelection: $postSelection)';
   }
 
   @override
@@ -601,7 +754,9 @@ class _$userprofileStateImpl implements userprofileState {
             const DeepCollectionEquality()
                 .equals(other._followers, _followers) &&
             const DeepCollectionEquality()
-                .equals(other._following, _following));
+                .equals(other._following, _following) &&
+            (identical(other.postSelection, postSelection) ||
+                other.postSelection == postSelection));
   }
 
   @override
@@ -611,7 +766,8 @@ class _$userprofileStateImpl implements userprofileState {
       sharedPost,
       userPosts,
       const DeepCollectionEquality().hash(_followers),
-      const DeepCollectionEquality().hash(_following));
+      const DeepCollectionEquality().hash(_following),
+      postSelection);
 
   @JsonKey(ignore: true)
   @override
@@ -627,7 +783,8 @@ abstract class userprofileState implements UserprofileState {
       required final StateResponse<List<PostsBySenderid?>>? sharedPost,
       required final StateResponse<List<PostsBySenderid?>>? userPosts,
       required final List<String> followers,
-      required final List<String> following}) = _$userprofileStateImpl;
+      required final List<String> following,
+      required final PostSelection postSelection}) = _$userprofileStateImpl;
 
   @override
   StateResponse<UserModel>? get userProfile;
@@ -639,6 +796,8 @@ abstract class userprofileState implements UserprofileState {
   List<String> get followers;
   @override
   List<String> get following;
+  @override
+  PostSelection get postSelection;
   @override
   @JsonKey(ignore: true)
   _$$userprofileStateImplCopyWith<_$userprofileStateImpl> get copyWith =>

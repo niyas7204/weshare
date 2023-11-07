@@ -4,3 +4,8 @@ enum StateStatus {
   success,
   initial,
 }
+
+enum PostSelection {
+  tags,
+  posts,
+}

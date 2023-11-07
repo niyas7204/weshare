@@ -4,8 +4,8 @@ import 'package:graphql/client.dart';
 import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/data/repository/user_profileservice.dart';
-import 'package:weshare/graphql/query/follow_and_unfollow.dart';
-import 'package:weshare/graphql/query/get_all_data.dart';
+import 'package:weshare/graphql/query/follow_and_unfollow_query.dart';
+import 'package:weshare/graphql/query/get_all_data_query.dart';
 
 class FollowImplimentation implements FollowService {
   //follow an account
