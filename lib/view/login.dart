@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:weshare/components/alert_diologe.dart';
-import 'package:weshare/components/form_field.dart';
+import 'package:weshare/components/custom_login.dart';
+import 'package:weshare/components/custom_signup.dart';
+
 import 'package:weshare/constants/logo.dart';
 import 'package:weshare/constants/sizes.dart';
 import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
@@ -23,12 +25,22 @@ class LoginPage extends StatelessWidget {
     AlertdiologeWidgets alertcontroller = Get.put(AlertdiologeWidgets());
     TextEditingController emailcontroller = TextEditingController();
     TextEditingController passwordcontroller = TextEditingController();
-    List<TextEditingController> controllers = [
+    List<TextEditingController> logincontrollers = [
       emailcontroller,
       passwordcontroller,
     ];
+    TextEditingController usernamecontroller = TextEditingController();
+    TextEditingController confirmPasswordcontroller = TextEditingController();
+    List<TextEditingController> signUpcontrollers = [
+      usernamecontroller,
+      emailcontroller,
+      passwordcontroller,
+      confirmPasswordcontroller
+    ];
     final formKey = GlobalKey<FormState>();
-    var labels = ['Email', 'Password'];
+    var SignUPlabels = ['User Name', 'Email', 'Password', 'Confirm Password'];
+
+    var loginlabels = ['Email', 'Password'];
     return BlocConsumer<UserAuthenticationBloc, UserAuthenticationState>(
       listener: (context, state) {
         if (state.loginState!.status == StateStatus.success) {
@@ -66,16 +78,15 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     children: [
                       AppLogo.baseLogo,
-                      CustomTexts.header1('Login'),
-                      Form(
-                          key: formKey,
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: labels.length,
-                              itemBuilder: (context, index) => CustomTextField(
-                                  label: labels[index],
-                                  controller: controllers[index],
-                                  formKey: formKey))),
+                      state.authSelection == AuthSelection.login
+                          ? CustomLogin(
+                              formKey: formKey,
+                              labels: loginlabels,
+                              controllers: logincontrollers)
+                          : CustomSignUp(
+                              formKey: formKey,
+                              labels: SignUPlabels,
+                              controllers: signUpcontrollers),
                       SpaceSized.space10H,
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +123,7 @@ class LoginPage extends StatelessWidget {
                           onPressed: () {
                             BlocProvider.of<UserAuthenticationBloc>(context)
                                 .add(UserAuthenticationEvent.userLogin(
-                                    controllers: controllers));
+                                    controllers: logincontrollers));
                           },
                           child: CustomTexts.labelText('Login')),
                     ],

@@ -13,4 +13,7 @@ class UserAuthenticationEvent with _$UserAuthenticationEvent {
       _pickImageFromGallery;
   const factory UserAuthenticationEvent.checkUserLoged() = _checkUserLoged;
   const factory UserAuthenticationEvent.userLogout() = _userLogout;
+  const factory UserAuthenticationEvent.changeAuthSelection(
+      {required AuthSelection authSelection,
+      required List<TextEditingController> controllers}) = _changeAuthSelection;
 }

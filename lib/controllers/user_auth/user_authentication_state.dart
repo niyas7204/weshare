@@ -9,12 +9,14 @@ class UserAuthenticationState with _$UserAuthenticationState {
     required StateResponse userLogout,
     required StateResponse<XFile?> profileImageFile,
     required StateResponse forgotPassword,
+    required AuthSelection authSelection,
   }) = userAuthenticationStatel;
   factory UserAuthenticationState.initial() => UserAuthenticationState(
       userSignUp: StateResponse.intial(),
       loginState: StateResponse.intial(),
       logedUser: StateResponse.intial(),
       userLogout: StateResponse.intial(),
+      authSelection: AuthSelection.login,
       profileImageFile: StateResponse.intial(),
       forgotPassword: StateResponse.intial());
 }

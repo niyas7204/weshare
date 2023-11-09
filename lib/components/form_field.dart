@@ -21,7 +21,10 @@ class CustomTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CustomTexts.labelText(label),
-        SizedBox(
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(width: 3)),
           height: 60,
           child: TextFormField(
             onChanged: (value) {
@@ -47,11 +50,7 @@ class CustomTextField extends StatelessWidget {
             keyboardType: password ? TextInputType.number : TextInputType.text,
             obscureText: password,
             controller: controller,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            decoration: const InputDecoration(border: InputBorder.none),
           ),
         ),
       ],

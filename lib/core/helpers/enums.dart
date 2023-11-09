@@ -9,3 +9,5 @@ enum PostSelection {
   tags,
   posts,
 }
+
+enum AuthSelection { login, signup }

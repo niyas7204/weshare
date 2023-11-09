@@ -142,5 +142,13 @@ class UserAuthenticationBloc
         }
       }
     });
+    on<_changeAuthSelection>(
+      (event, emit) {
+        for (var controller in event.controllers) {
+          controller.clear();
+        }
+        emit(state.copyWith(authSelection: event.authSelection));
+      },
+    );
   }
 }

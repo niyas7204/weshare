@@ -27,6 +27,9 @@ mixin _$UserAuthenticationEvent {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +41,9 @@ mixin _$UserAuthenticationEvent {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -49,6 +55,9 @@ mixin _$UserAuthenticationEvent {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +69,7 @@ mixin _$UserAuthenticationEvent {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +80,7 @@ mixin _$UserAuthenticationEvent {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,6 +91,7 @@ mixin _$UserAuthenticationEvent {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -186,6 +198,9 @@ class _$userLoginImpl implements _userLogin {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) {
     return userLogin(controllers);
   }
@@ -200,6 +215,9 @@ class _$userLoginImpl implements _userLogin {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) {
     return userLogin?.call(controllers);
   }
@@ -214,6 +232,9 @@ class _$userLoginImpl implements _userLogin {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) {
     if (userLogin != null) {
@@ -231,6 +252,7 @@ class _$userLoginImpl implements _userLogin {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) {
     return userLogin(this);
   }
@@ -244,6 +266,7 @@ class _$userLoginImpl implements _userLogin {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) {
     return userLogin?.call(this);
   }
@@ -257,6 +280,7 @@ class _$userLoginImpl implements _userLogin {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) {
     if (userLogin != null) {
@@ -369,6 +393,9 @@ class _$userSignupImpl implements _userSignup {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) {
     return userSignUP(controllers, profile);
   }
@@ -383,6 +410,9 @@ class _$userSignupImpl implements _userSignup {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) {
     return userSignUP?.call(controllers, profile);
   }
@@ -397,6 +427,9 @@ class _$userSignupImpl implements _userSignup {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) {
     if (userSignUP != null) {
@@ -414,6 +447,7 @@ class _$userSignupImpl implements _userSignup {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) {
     return userSignUP(this);
   }
@@ -427,6 +461,7 @@ class _$userSignupImpl implements _userSignup {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) {
     return userSignUP?.call(this);
   }
@@ -440,6 +475,7 @@ class _$userSignupImpl implements _userSignup {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) {
     if (userSignUP != null) {
@@ -535,6 +571,9 @@ class _$fotgotPasswordImpl implements _fotgotPassword {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) {
     return forgotPassword(email);
   }
@@ -549,6 +588,9 @@ class _$fotgotPasswordImpl implements _fotgotPassword {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) {
     return forgotPassword?.call(email);
   }
@@ -563,6 +605,9 @@ class _$fotgotPasswordImpl implements _fotgotPassword {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) {
     if (forgotPassword != null) {
@@ -580,6 +625,7 @@ class _$fotgotPasswordImpl implements _fotgotPassword {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) {
     return forgotPassword(this);
   }
@@ -593,6 +639,7 @@ class _$fotgotPasswordImpl implements _fotgotPassword {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) {
     return forgotPassword?.call(this);
   }
@@ -606,6 +653,7 @@ class _$fotgotPasswordImpl implements _fotgotPassword {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) {
     if (forgotPassword != null) {
@@ -674,6 +722,9 @@ class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) {
     return pickImageFromGallery();
   }
@@ -688,6 +739,9 @@ class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) {
     return pickImageFromGallery?.call();
   }
@@ -702,6 +756,9 @@ class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) {
     if (pickImageFromGallery != null) {
@@ -719,6 +776,7 @@ class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) {
     return pickImageFromGallery(this);
   }
@@ -732,6 +790,7 @@ class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) {
     return pickImageFromGallery?.call(this);
   }
@@ -745,6 +804,7 @@ class _$pickImageFromGalleryImpl implements _pickImageFromGallery {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) {
     if (pickImageFromGallery != null) {
@@ -805,6 +865,9 @@ class _$checkUserLogedImpl implements _checkUserLoged {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) {
     return checkUserLoged();
   }
@@ -819,6 +882,9 @@ class _$checkUserLogedImpl implements _checkUserLoged {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) {
     return checkUserLoged?.call();
   }
@@ -833,6 +899,9 @@ class _$checkUserLogedImpl implements _checkUserLoged {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) {
     if (checkUserLoged != null) {
@@ -850,6 +919,7 @@ class _$checkUserLogedImpl implements _checkUserLoged {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) {
     return checkUserLoged(this);
   }
@@ -863,6 +933,7 @@ class _$checkUserLogedImpl implements _checkUserLoged {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) {
     return checkUserLoged?.call(this);
   }
@@ -876,6 +947,7 @@ class _$checkUserLogedImpl implements _checkUserLoged {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) {
     if (checkUserLoged != null) {
@@ -936,6 +1008,9 @@ class _$userLogoutImpl implements _userLogout {
     required TResult Function() pickImageFromGallery,
     required TResult Function() checkUserLoged,
     required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
   }) {
     return userLogout();
   }
@@ -950,6 +1025,9 @@ class _$userLogoutImpl implements _userLogout {
     TResult? Function()? pickImageFromGallery,
     TResult? Function()? checkUserLoged,
     TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
   }) {
     return userLogout?.call();
   }
@@ -964,6 +1042,9 @@ class _$userLogoutImpl implements _userLogout {
     TResult Function()? pickImageFromGallery,
     TResult Function()? checkUserLoged,
     TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
     required TResult orElse(),
   }) {
     if (userLogout != null) {
@@ -981,6 +1062,7 @@ class _$userLogoutImpl implements _userLogout {
     required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
     required TResult Function(_checkUserLoged value) checkUserLoged,
     required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
   }) {
     return userLogout(this);
   }
@@ -994,6 +1076,7 @@ class _$userLogoutImpl implements _userLogout {
     TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult? Function(_checkUserLoged value)? checkUserLoged,
     TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
   }) {
     return userLogout?.call(this);
   }
@@ -1007,6 +1090,7 @@ class _$userLogoutImpl implements _userLogout {
     TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
     TResult Function(_checkUserLoged value)? checkUserLoged,
     TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
     required TResult orElse(),
   }) {
     if (userLogout != null) {
@@ -1021,6 +1105,206 @@ abstract class _userLogout implements UserAuthenticationEvent {
 }
 
 /// @nodoc
+abstract class _$$changeAuthSelectionImplCopyWith<$Res> {
+  factory _$$changeAuthSelectionImplCopyWith(_$changeAuthSelectionImpl value,
+          $Res Function(_$changeAuthSelectionImpl) then) =
+      __$$changeAuthSelectionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {AuthSelection authSelection, List<TextEditingController> controllers});
+}
+
+/// @nodoc
+class __$$changeAuthSelectionImplCopyWithImpl<$Res>
+    extends _$UserAuthenticationEventCopyWithImpl<$Res,
+        _$changeAuthSelectionImpl>
+    implements _$$changeAuthSelectionImplCopyWith<$Res> {
+  __$$changeAuthSelectionImplCopyWithImpl(_$changeAuthSelectionImpl _value,
+      $Res Function(_$changeAuthSelectionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? authSelection = null,
+    Object? controllers = null,
+  }) {
+    return _then(_$changeAuthSelectionImpl(
+      authSelection: null == authSelection
+          ? _value.authSelection
+          : authSelection // ignore: cast_nullable_to_non_nullable
+              as AuthSelection,
+      controllers: null == controllers
+          ? _value._controllers
+          : controllers // ignore: cast_nullable_to_non_nullable
+              as List<TextEditingController>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$changeAuthSelectionImpl implements _changeAuthSelection {
+  const _$changeAuthSelectionImpl(
+      {required this.authSelection,
+      required final List<TextEditingController> controllers})
+      : _controllers = controllers;
+
+  @override
+  final AuthSelection authSelection;
+  final List<TextEditingController> _controllers;
+  @override
+  List<TextEditingController> get controllers {
+    if (_controllers is EqualUnmodifiableListView) return _controllers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_controllers);
+  }
+
+  @override
+  String toString() {
+    return 'UserAuthenticationEvent.changeAuthSelection(authSelection: $authSelection, controllers: $controllers)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$changeAuthSelectionImpl &&
+            (identical(other.authSelection, authSelection) ||
+                other.authSelection == authSelection) &&
+            const DeepCollectionEquality()
+                .equals(other._controllers, _controllers));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, authSelection,
+      const DeepCollectionEquality().hash(_controllers));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$changeAuthSelectionImplCopyWith<_$changeAuthSelectionImpl> get copyWith =>
+      __$$changeAuthSelectionImplCopyWithImpl<_$changeAuthSelectionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<TextEditingController> controllers)
+        userLogin,
+    required TResult Function(
+            List<TextEditingController> controllers, XFile? profile)
+        userSignUP,
+    required TResult Function(String email) forgotPassword,
+    required TResult Function() pickImageFromGallery,
+    required TResult Function() checkUserLoged,
+    required TResult Function() userLogout,
+    required TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)
+        changeAuthSelection,
+  }) {
+    return changeAuthSelection(authSelection, controllers);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<TextEditingController> controllers)? userLogin,
+    TResult? Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult? Function(String email)? forgotPassword,
+    TResult? Function()? pickImageFromGallery,
+    TResult? Function()? checkUserLoged,
+    TResult? Function()? userLogout,
+    TResult? Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
+  }) {
+    return changeAuthSelection?.call(authSelection, controllers);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<TextEditingController> controllers)? userLogin,
+    TResult Function(List<TextEditingController> controllers, XFile? profile)?
+        userSignUP,
+    TResult Function(String email)? forgotPassword,
+    TResult Function()? pickImageFromGallery,
+    TResult Function()? checkUserLoged,
+    TResult Function()? userLogout,
+    TResult Function(AuthSelection authSelection,
+            List<TextEditingController> controllers)?
+        changeAuthSelection,
+    required TResult orElse(),
+  }) {
+    if (changeAuthSelection != null) {
+      return changeAuthSelection(authSelection, controllers);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_userLogin value) userLogin,
+    required TResult Function(_userSignup value) userSignUP,
+    required TResult Function(_fotgotPassword value) forgotPassword,
+    required TResult Function(_pickImageFromGallery value) pickImageFromGallery,
+    required TResult Function(_checkUserLoged value) checkUserLoged,
+    required TResult Function(_userLogout value) userLogout,
+    required TResult Function(_changeAuthSelection value) changeAuthSelection,
+  }) {
+    return changeAuthSelection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_userLogin value)? userLogin,
+    TResult? Function(_userSignup value)? userSignUP,
+    TResult? Function(_fotgotPassword value)? forgotPassword,
+    TResult? Function(_pickImageFromGallery value)? pickImageFromGallery,
+    TResult? Function(_checkUserLoged value)? checkUserLoged,
+    TResult? Function(_userLogout value)? userLogout,
+    TResult? Function(_changeAuthSelection value)? changeAuthSelection,
+  }) {
+    return changeAuthSelection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_userLogin value)? userLogin,
+    TResult Function(_userSignup value)? userSignUP,
+    TResult Function(_fotgotPassword value)? forgotPassword,
+    TResult Function(_pickImageFromGallery value)? pickImageFromGallery,
+    TResult Function(_checkUserLoged value)? checkUserLoged,
+    TResult Function(_userLogout value)? userLogout,
+    TResult Function(_changeAuthSelection value)? changeAuthSelection,
+    required TResult orElse(),
+  }) {
+    if (changeAuthSelection != null) {
+      return changeAuthSelection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _changeAuthSelection implements UserAuthenticationEvent {
+  const factory _changeAuthSelection(
+          {required final AuthSelection authSelection,
+          required final List<TextEditingController> controllers}) =
+      _$changeAuthSelectionImpl;
+
+  AuthSelection get authSelection;
+  List<TextEditingController> get controllers;
+  @JsonKey(ignore: true)
+  _$$changeAuthSelectionImplCopyWith<_$changeAuthSelectionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UserAuthenticationState {
   StateResponse<String>? get userSignUp => throw _privateConstructorUsedError;
   StateResponse<String>? get loginState => throw _privateConstructorUsedError;
@@ -1030,6 +1314,7 @@ mixin _$UserAuthenticationState {
       throw _privateConstructorUsedError;
   StateResponse<dynamic> get forgotPassword =>
       throw _privateConstructorUsedError;
+  AuthSelection get authSelection => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserAuthenticationStateCopyWith<UserAuthenticationState> get copyWith =>
@@ -1048,7 +1333,8 @@ abstract class $UserAuthenticationStateCopyWith<$Res> {
       StateResponse<String?>? logedUser,
       StateResponse<dynamic> userLogout,
       StateResponse<XFile?> profileImageFile,
-      StateResponse<dynamic> forgotPassword});
+      StateResponse<dynamic> forgotPassword,
+      AuthSelection authSelection});
 }
 
 /// @nodoc
@@ -1071,6 +1357,7 @@ class _$UserAuthenticationStateCopyWithImpl<$Res,
     Object? userLogout = null,
     Object? profileImageFile = null,
     Object? forgotPassword = null,
+    Object? authSelection = null,
   }) {
     return _then(_value.copyWith(
       userSignUp: freezed == userSignUp
@@ -1097,6 +1384,10 @@ class _$UserAuthenticationStateCopyWithImpl<$Res,
           ? _value.forgotPassword
           : forgotPassword // ignore: cast_nullable_to_non_nullable
               as StateResponse<dynamic>,
+      authSelection: null == authSelection
+          ? _value.authSelection
+          : authSelection // ignore: cast_nullable_to_non_nullable
+              as AuthSelection,
     ) as $Val);
   }
 }
@@ -1116,7 +1407,8 @@ abstract class _$$userAuthenticationStatelImplCopyWith<$Res>
       StateResponse<String?>? logedUser,
       StateResponse<dynamic> userLogout,
       StateResponse<XFile?> profileImageFile,
-      StateResponse<dynamic> forgotPassword});
+      StateResponse<dynamic> forgotPassword,
+      AuthSelection authSelection});
 }
 
 /// @nodoc
@@ -1138,6 +1430,7 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
     Object? userLogout = null,
     Object? profileImageFile = null,
     Object? forgotPassword = null,
+    Object? authSelection = null,
   }) {
     return _then(_$userAuthenticationStatelImpl(
       userSignUp: freezed == userSignUp
@@ -1164,6 +1457,10 @@ class __$$userAuthenticationStatelImplCopyWithImpl<$Res>
           ? _value.forgotPassword
           : forgotPassword // ignore: cast_nullable_to_non_nullable
               as StateResponse<dynamic>,
+      authSelection: null == authSelection
+          ? _value.authSelection
+          : authSelection // ignore: cast_nullable_to_non_nullable
+              as AuthSelection,
     ));
   }
 }
@@ -1177,7 +1474,8 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
       required this.logedUser,
       required this.userLogout,
       required this.profileImageFile,
-      required this.forgotPassword});
+      required this.forgotPassword,
+      required this.authSelection});
 
   @override
   final StateResponse<String>? userSignUp;
@@ -1191,10 +1489,12 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
   final StateResponse<XFile?> profileImageFile;
   @override
   final StateResponse<dynamic> forgotPassword;
+  @override
+  final AuthSelection authSelection;
 
   @override
   String toString() {
-    return 'UserAuthenticationState(userSignUp: $userSignUp, loginState: $loginState, logedUser: $logedUser, userLogout: $userLogout, profileImageFile: $profileImageFile, forgotPassword: $forgotPassword)';
+    return 'UserAuthenticationState(userSignUp: $userSignUp, loginState: $loginState, logedUser: $logedUser, userLogout: $userLogout, profileImageFile: $profileImageFile, forgotPassword: $forgotPassword, authSelection: $authSelection)';
   }
 
   @override
@@ -1213,12 +1513,14 @@ class _$userAuthenticationStatelImpl implements userAuthenticationStatel {
             (identical(other.profileImageFile, profileImageFile) ||
                 other.profileImageFile == profileImageFile) &&
             (identical(other.forgotPassword, forgotPassword) ||
-                other.forgotPassword == forgotPassword));
+                other.forgotPassword == forgotPassword) &&
+            (identical(other.authSelection, authSelection) ||
+                other.authSelection == authSelection));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, userSignUp, loginState,
-      logedUser, userLogout, profileImageFile, forgotPassword);
+      logedUser, userLogout, profileImageFile, forgotPassword, authSelection);
 
   @JsonKey(ignore: true)
   @override
@@ -1235,7 +1537,8 @@ abstract class userAuthenticationStatel implements UserAuthenticationState {
           required final StateResponse<String?>? logedUser,
           required final StateResponse<dynamic> userLogout,
           required final StateResponse<XFile?> profileImageFile,
-          required final StateResponse<dynamic> forgotPassword}) =
+          required final StateResponse<dynamic> forgotPassword,
+          required final AuthSelection authSelection}) =
       _$userAuthenticationStatelImpl;
 
   @override
@@ -1250,6 +1553,8 @@ abstract class userAuthenticationStatel implements UserAuthenticationState {
   StateResponse<XFile?> get profileImageFile;
   @override
   StateResponse<dynamic> get forgotPassword;
+  @override
+  AuthSelection get authSelection;
   @override
   @JsonKey(ignore: true)
   _$$userAuthenticationStatelImplCopyWith<_$userAuthenticationStatelImpl>
