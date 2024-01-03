@@ -17,11 +17,11 @@ class SignUpPainter extends CustomPainter {
     path_0.moveTo(0, 120);
 
     // Move to the first vertex
-    path_0.quadraticBezierTo(0, 0, 30, 90);
-    path_0.lineTo(size.width * 0.5 - 30, 90);
-    path_0.quadraticBezierTo(size.width * 0.5, 90, size.width * 0.5, 60);
-    path_0.lineTo(size.width * 0.5, 30);
-    path_0.quadraticBezierTo(size.width * 0.5, 0, size.width * 0.5 + 30, 0);
+    path_0.quadraticBezierTo(0, 90, 30, 90);
+    path_0.lineTo(size.width * 0.5 - 60, 90);
+    path_0.quadraticBezierTo(size.width * 0.5, 90, size.width * 0.5 + 5, 45);
+
+    path_0.quadraticBezierTo(size.width * 0.5 + 5, 0, size.width * 0.5 + 50, 0);
     path_0.lineTo(size.width - 30, 0);
     path_0.quadraticBezierTo(size.width, 0, size.width, 30);
     path_0.lineTo(size.width, size.height - 30);

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weshare/components/custompaints/login_box.dart';
 import 'package:weshare/components/form_field.dart';
-import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
+import 'package:weshare/constants/sizes.dart';
 import 'package:weshare/core/helpers/enums.dart';
+import 'package:weshare/features/user_auth/view_model/user_authentication_bloc.dart';
 import 'package:weshare/utils/custom_texts.dart';
 
 class CustomLogin extends StatelessWidget {
@@ -24,31 +25,33 @@ class CustomLogin extends StatelessWidget {
       decoration: BoxDecoration(
           color: const Color.fromARGB(150, 96, 125, 139),
           borderRadius: BorderRadius.circular(27)),
-      height: 330,
       child: Stack(
         children: [
-          Positioned(
-            right: 20,
-            top: 20,
-            child: TextButton(
-                onPressed: () {
-                  BlocProvider.of<UserAuthenticationBloc>(context).add(
-                      UserAuthenticationEvent.changeAuthSelection(
-                          controllers: controllers,
-                          authSelection: AuthSelection.login));
-                },
-                child: CustomTexts.header1('Sign UP')),
-          ),
           CustomPaint(
             painter: LoginPainter(),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Stack(
+              child: Column(
                 children: [
-                  Positioned(
-                    top: 20,
-                    left: 30,
-                    child: CustomTexts.header1('Login'),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomTexts.header1('Log In'),
+                        GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<UserAuthenticationBloc>(context)
+                                  .add(UserAuthenticationEvent
+                                      .changeAuthSelection(
+                                          controllers: controllers,
+                                          authSelection: AuthSelection.signup));
+                            },
+                            child: SizedBox(
+                              child: CustomTexts.header1('Sign Up'),
+                            )),
+                      ],
+                    ),
                   ),
                   Center(
                     child: Form(
@@ -61,6 +64,14 @@ class CustomLogin extends StatelessWidget {
                                 controller: controllers[index],
                                 formKey: formKey))),
                   ),
+                  SpaceSized.space10H,
+                  ElevatedButton(
+                      onPressed: () {
+                        BlocProvider.of<UserAuthenticationBloc>(context).add(
+                            UserAuthenticationEvent.userLogin(
+                                controllers: controllers));
+                      },
+                      child: CustomTexts.labelText('Log In')),
                 ],
               ),
             ),

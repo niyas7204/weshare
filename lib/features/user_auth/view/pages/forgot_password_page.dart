@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:weshare/components/alert_diologe.dart';
 import 'package:weshare/components/form_field.dart';
 import 'package:weshare/constants/logo.dart';
-import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
 import 'package:weshare/core/helpers/enums.dart';
+import 'package:weshare/features/user_auth/view_model/user_authentication_bloc.dart';
 import 'package:weshare/utils/custom_texts.dart';
 
 class ForgotPassword extends StatelessWidget {
@@ -30,6 +30,7 @@ class ForgotPassword extends StatelessWidget {
               child: SafeArea(
                   child: Stack(
             children: [
+              Center(child: AppLogo.baseLogo),
               state.forgotPassword.status == StateStatus.loading
                   ? Container(
                       color: const Color.fromARGB(209, 49, 49, 49),
@@ -39,24 +40,31 @@ class ForgotPassword extends StatelessWidget {
                     )
                   : const SizedBox(),
               Center(
-                child: Column(
-                  children: [
-                    AppLogo.baseLogo,
-                    CustomTexts.header1('Forgot Password'),
-                    CustomTexts.text15(
-                        'Enter your email to reset your password'),
-                    CustomTextField(
-                        label: "Email",
-                        controller: emailController,
-                        formKey: formKey),
-                    ElevatedButton(
-                        onPressed: () {
-                          BlocProvider.of<UserAuthenticationBloc>(context).add(
-                              UserAuthenticationEvent.forgotPassword(
-                                  email: emailController.text));
-                        },
-                        child: CustomTexts.labelText('Sent')),
-                  ],
+                child: SizedBox(
+                  height: 300,
+                  child: Column(
+                    children: [
+                      CustomTexts.header1('Forgot Password'),
+                      CustomTexts.text15(
+                          'Enter your email to reset your password'),
+                      Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Form(
+                            key: formKey,
+                            child: CustomTextField(
+                                label: "Email",
+                                controller: emailController,
+                                formKey: formKey),
+                          )),
+                      ElevatedButton(
+                          onPressed: () {
+                            BlocProvider.of<UserAuthenticationBloc>(context)
+                                .add(UserAuthenticationEvent.forgotPassword(
+                                    email: emailController.text.trim()));
+                          },
+                          child: CustomTexts.labelText('Sent')),
+                    ],
+                  ),
                 ),
               ),
             ],

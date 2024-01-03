@@ -47,10 +47,12 @@ class CustomTextField extends StatelessWidget {
                 return null;
               }
             },
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
             keyboardType: password ? TextInputType.number : TextInputType.text,
             obscureText: password,
             controller: controller,
-            decoration: const InputDecoration(border: InputBorder.none),
+            decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(12), border: InputBorder.none),
           ),
         ),
       ],

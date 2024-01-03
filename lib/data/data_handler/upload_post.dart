@@ -5,7 +5,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
-import 'package:weshare/data/repository/upload_image.dart';
+import 'package:weshare/data/repository/upload_post.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:weshare/models/compound_user_data_model.dart';
 
@@ -44,10 +44,18 @@ class UploadPostImplimentaion implements UploadPostSeivice {
 //upload post to table
   @override
   Future<StateResponse<String>> uploadpostToTable(
-      {required PostsBySenderid post}) async {
+      {required PostsBySenderid post, required List<String> tags}) async {
+    List tagedUsers = [];
+    if (tags.isNotEmpty) {
+      for (var tag in tags) {
+        var a = {"user_Id: $tag"};
+        tagedUsers.add(a);
+      }
+    }
     log('post ${post.senderName} ${post.senderId}  ${post.postId}');
     final String mutation = '''mutation MyMutation {
-  insert_post(objects: {senderId: "${post.senderId}", senderName: "${post.senderName}", postId: "${post.postId}", imageFeed: "${post.imageFeed}", textFeed: "${post.textFeed}"}) {
+  insert_post(objects: {senderId: "${post.senderId}", senderName: "${post.senderName}", postId: "${post.postId}", imageFeed: "${post.imageFeed}",
+   textFeed: "${post.textFeed}", post_tags:{data:"$tagedUsers"} }) {
     returning {
       postId
       senderId
@@ -72,23 +80,4 @@ class UploadPostImplimentaion implements UploadPostSeivice {
     }
   }
 
-//update user ater posting
-  @override
-  Future<StateResponse> updateUser(
-      {required String postId, required String userId}) async {
-    final String mutation = '''mutation MyMutation {
-  update_user(_append: {following: "$postId"}, where: {userId: {_eq: "$userId"}}) {
-    affected_rows
-  }
-}
-''';
-    try {
-      final mutationOption = MutationOptions(document: gql(mutation));
-
-      await GraphQlClientGenaration.graphQLClient.mutate(mutationOption);
-      return StateResponse.success(null);
-    } catch (e) {
-      return StateResponse.error('user updation failed');
-    }
-  }
 }

@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:weshare/components/post_card.dart';
 import 'package:weshare/controllers/User_Data/userprofile_bloc.dart';
-import 'package:weshare/controllers/user_auth/user_authentication_bloc.dart';
 import 'package:weshare/core/helpers/enums.dart';
+import 'package:weshare/features/user_auth/view/pages/login.dart';
+import 'package:weshare/features/user_auth/view_model/user_authentication_bloc.dart';
 
 import 'package:weshare/utils/custom_texts.dart';
-import 'package:weshare/view/login.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({

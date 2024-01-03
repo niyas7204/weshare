@@ -16,9 +16,10 @@ class LoginPainter extends CustomPainter {
     path_0.moveTo(0, 30);
     path_0.quadraticBezierTo(0, 0, 30, 0);
     path_0.lineTo(size.width * 0.5 - 45, 0);
-    path_0.quadraticBezierTo(size.width * 0.5, 0, size.width * 0.5, 45);
-    path_0.lineTo(size.width * 0.5, 60);
-    path_0.quadraticBezierTo(size.width * 0.5, 90, size.width * 0.5 + 30, 90);
+    path_0.quadraticBezierTo(size.width * 0.5 - 5, 0, size.width * 0.5 - 5, 45);
+
+    path_0.quadraticBezierTo(
+        size.width * 0.5 + 10, 90, size.width * 0.5 + 40, 90);
     path_0.lineTo(size.width - 30, 90);
 
     path_0.quadraticBezierTo(size.width, 90, size.width, 120);
@@ -28,12 +29,6 @@ class LoginPainter extends CustomPainter {
     path_0.lineTo(30, size.height);
     path_0.quadraticBezierTo(0, size.height, 0, size.height - 30);
     path_0.close();
-    Paint paintstroke_0 = Paint()
-      ..color = const Color.fromARGB(255, 33, 150, 243)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = size.width * 0.02
-      ..strokeCap = StrokeCap.butt
-      ..strokeJoin = StrokeJoin.miter;
 
     canvas.drawPath(path_0, paintfill_0);
     // Layer 1

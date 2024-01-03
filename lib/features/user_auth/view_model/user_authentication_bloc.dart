@@ -9,7 +9,7 @@ import 'package:weshare/components/alert_diologe.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/core/helpers/enums.dart';
 import 'package:weshare/data/repository/authentication_service.dart';
-import 'package:weshare/data/repository/upload_image.dart';
+import 'package:weshare/data/repository/upload_post.dart';
 part 'user_authentication_event.dart';
 part 'user_authentication_state.dart';
 part 'user_authentication_bloc.freezed.dart';
@@ -137,6 +137,7 @@ class UserAuthenticationBloc
         if (result.status == StateStatus.success) {
           emit(state.copyWith(forgotPassword: StateResponse.success(null)));
         } else {
+          alertdcontroller.warnigAlert(result.errorMessage!);
           emit(state.copyWith(
               forgotPassword: StateResponse.error('Faled to reset password')));
         }

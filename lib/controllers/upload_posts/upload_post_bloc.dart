@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/core/helpers/enums.dart';
-import 'package:weshare/data/repository/upload_image.dart';
+import 'package:weshare/data/repository/upload_post.dart';
 import 'package:weshare/models/compound_user_data_model.dart';
 
 part 'upload_post_event.dart';
@@ -65,19 +65,12 @@ class UploadPostBloc extends Bloc<UploadPostEvent, UploadPostState> {
               postId: uid,
               textFeed: event.textFeed,
               imageFeed: image);
-          final response =
-              await uploadPostSeivice.uploadpostToTable(post: post);
+          final response = await uploadPostSeivice.uploadpostToTable(
+              post: post, tags: event.tags!);
           if (response.status == StateStatus.success) {
-            final userUpdate = await uploadPostSeivice.updateUser(
-                postId: response.data!, userId: event.userId);
-            if (userUpdate.status == StateStatus.success) {
-              emit(state.copyWith(
-                  uploadPoststate: StateResponse.success(response.data),
-                  imageFile: StateResponse.success(null)));
-            } else if (userUpdate.status == StateStatus.error) {
-              emit(state.copyWith(
-                  uploadPoststate: StateResponse.error('upload failed.!')));
-            }
+            emit(state.copyWith(
+                uploadPoststate: StateResponse.success(response.data),
+                imageFile: StateResponse.success(null)));
           } else if (response.status == StateStatus.error) {
             emit(state.copyWith(
                 uploadPoststate: StateResponse.error('upload failed.!')));

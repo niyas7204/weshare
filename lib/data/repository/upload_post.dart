@@ -8,7 +8,5 @@ abstract class UploadPostSeivice {
     required XFile imagefile,
   });
   Future<StateResponse<String>> uploadpostToTable(
-      {required PostsBySenderid post});
-  Future<StateResponse> updateUser(
-      {required String postId, required String userId});
+      {required PostsBySenderid post, required List<String> tags});
 }

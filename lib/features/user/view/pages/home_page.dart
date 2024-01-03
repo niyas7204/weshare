@@ -65,10 +65,17 @@ class HomePage extends StatelessWidget {
                     child: Padding(
                       padding:
                           const EdgeInsets.only(right: 12, top: 5, bottom: 5),
-                      child: ClipOval(
-                        child: Image.network(
-                            'https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg'),
-                      ),
+                      child: state.userProfile!.data!.profileImage != null
+                          ? CircleAvatar(
+                              radius: 25,
+                              backgroundImage: NetworkImage(
+                                  state.userProfile!.data!.profileImage!),
+                            )
+                          : const CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.blueGrey,
+                              child: Icon(Icons.person_2),
+                            ),
                     ),
                   ),
                 ],

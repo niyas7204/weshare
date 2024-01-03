@@ -6,7 +6,6 @@ import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/data/repository/user_profileservice.dart';
 import 'package:weshare/graphql/query/get_all_data_query.dart';
 import 'package:weshare/models/compound_user_data_model.dart';
-import 'package:weshare/models/compound_user_data_model.dart';
 import 'package:weshare/models/user_profile_model.dart';
 import 'package:weshare/models/user_state_mode.dart';
 import 'package:graphql/client.dart';
@@ -75,7 +74,7 @@ class UserDataImplimentation implements CompountService {
         userid: userData.user[0].userId,
         email: userData.user[0].email,
         userName: userData.user[0].userName,
-        profileImage: null,
+        profileImage: userData.user[0].profileImage,
       );
       UserStateModel userStateData = UserStateModel(
           followers: followingId,

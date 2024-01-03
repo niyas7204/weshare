@@ -13,4 +13,7 @@ class SpaceSized {
   static const SizedBox space10w = SizedBox(
     width: 10,
   );
+  static const SizedBox space20H = SizedBox(
+    height: 20,
+  );
 }

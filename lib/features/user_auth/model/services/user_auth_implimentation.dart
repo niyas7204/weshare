@@ -117,8 +117,18 @@ class UserAuthImplimentaion implements UserAuthenticationService {
   @override
   Future<StateResponse> forgotPassword({required String email}) async {
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      final signInMethods =
+          await FirebaseAuth.instance.fetchSignInMethodsForEmail(email);
+      if (signInMethods.isNotEmpty) {
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      } else {
+        return StateResponse.error('Email not found');
+      }
+
       return StateResponse.success(null);
+    } on FirebaseAuthException catch (e) {
+      log(e.message.toString());
+      return StateResponse.error('failed to send email to reset ${e.message}');
     } catch (e) {
       return StateResponse.error('failed to send email to reset');
     }
