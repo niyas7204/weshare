@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 import 'package:weshare/components/alert_diologe.dart';
 
 import 'package:weshare/controllers/search_account_bloc/search_account_bloc.dart';
-import 'package:weshare/controllers/upload_posts/upload_post_bloc.dart';
 import 'package:weshare/core/helpers/debouncer.dart';
 import 'package:weshare/core/helpers/enums.dart';
-import 'package:weshare/models/user_profile_model.dart';
+import 'package:weshare/features/upload_post/view_model/upload_post_bloc.dart';
+import 'package:weshare/features/user/model/data_model/user_profile_model.dart';
 import 'package:weshare/utils/custom_texts.dart';
 
 class UploadPostScreen extends StatelessWidget {

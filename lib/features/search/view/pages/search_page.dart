@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weshare/controllers/User_Data/userprofile_bloc.dart';
-import 'package:weshare/controllers/search_account_bloc/search_account_bloc.dart';
 import 'package:weshare/core/helpers/debouncer.dart';
 
 import 'package:weshare/core/helpers/enums.dart';
+import 'package:weshare/features/search/view_model/search_account_bloc.dart';
+import 'package:weshare/features/user/view_model/userprofile_bloc.dart';
 import 'package:weshare/utils/custom_texts.dart';
 
 class SearchPage extends StatelessWidget {

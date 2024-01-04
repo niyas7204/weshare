@@ -4,8 +4,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/core/helpers/enums.dart';
-import 'package:weshare/data/repository/upload_post.dart';
-import 'package:weshare/models/compound_user_data_model.dart';
+import 'package:weshare/features/upload_post/model/repository/upload_post.dart';
+import 'package:weshare/features/user/model/data_model/compound_user_data_model.dart';
 
 part 'upload_post_event.dart';
 part 'upload_post_state.dart';

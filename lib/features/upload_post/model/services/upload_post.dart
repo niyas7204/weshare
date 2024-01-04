@@ -5,7 +5,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
-import 'package:weshare/data/repository/upload_post.dart';
+import 'package:weshare/features/user/model/repository/upload_post.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:weshare/models/compound_user_data_model.dart';
 
@@ -79,5 +79,4 @@ class UploadPostImplimentaion implements UploadPostSeivice {
       return StateResponse.error('Failed to upload image.');
     }
   }
-
 }

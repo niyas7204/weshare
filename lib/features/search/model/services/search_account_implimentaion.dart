@@ -4,7 +4,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:weshare/graphql/client/graphql_client.dart';
 import 'package:weshare/core/helpers/api_response_handler.dart';
 import 'package:weshare/data/repository/search_user_service.dart';
-import 'package:weshare/models/user_profile_model.dart';
+import 'package:weshare/features/user/model/data_model/user_profile_model.dart';
 
 class SearchAccountImplimentation implements SearchAccountService {
   @override

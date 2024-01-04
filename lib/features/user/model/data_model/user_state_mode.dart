@@ -1,5 +1,5 @@
-import 'package:weshare/models/compound_user_data_model.dart';
-import 'package:weshare/models/user_profile_model.dart';
+import 'package:weshare/features/user/model/data_model/compound_user_data_model.dart';
+import 'package:weshare/features/user/model/data_model/user_profile_model.dart';
 
 class UserStateModel {
   List<String> followers;
